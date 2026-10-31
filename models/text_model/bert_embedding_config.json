@@ -1,0 +1,6 @@
+{
+  "local_model_path": "C:\\Users\\RAMESH\\.cache\\huggingface\\hub\\models--bert-base-uncased\\snapshots\\86b5e0934494bd15c9632b12f734a8a67f723594",
+  "pooling": "attention-mask mean pooling",
+  "classifier": "LogisticRegression",
+  "test_policy": "held-out leakage-free test only"
+}

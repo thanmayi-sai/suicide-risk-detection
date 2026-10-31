@@ -1,0 +1,155 @@
+PROJECT: Suicide-Risk Detection Using NLP-Based Text and Speech Analysis
+FINAL DATASET AUDIT AND USAGE PLAN
+==============================================================
+
+1) DATASET 1: SDCNL / REDDIT TEXT DATASET
+Purpose:
+- Primary NLP branch for suicide-related text classification.
+- Binary label used: is_suicide (0/1).
+- This is the correct dataset for the text-suicide detection part.
+
+Final model files:
+- training-set-clean.csv
+  Final rows: 1513
+  Label 0: 727
+  Label 1: 786
+
+- testing-set-clean-leakage-free.csv
+  Final rows: 379
+  Label 0: 186
+  Label 1: 193
+
+Verification:
+- No empty model_text
+- No duplicate model_text + label inside final splits
+- No train-test model_text overlap after case/whitespace-normalized leakage check
+- Labels remain binary 0/1
+- Training file is not changed by leakage removal
+
+Reference-only / EDA file:
+- combined-set-clean.csv
+  Final rows: 1892
+  DO NOT train with combined-set-clean.csv together with the existing train/test split.
+  It represents the combined source and using it with the test split would create leakage.
+
+Recommended text-model input:
+- model_text (derived from megatext_clean)
+Recommended text-model target:
+- is_suicide
+
+--------------------------------------------------------------
+
+2) DATASET 2: EATD-CORPUS
+Purpose:
+- Speech + transcript depression/distress signal branch.
+- EATD is NOT a direct suicide-risk-labelled dataset.
+- It is used as a complementary speech/distress signal in the final screening system.
+
+Official structure:
+- Training split: 83 participant folders
+- Validation split: 79 participant folders
+- Each valid participant normally contains:
+  positive.wav / positive_out.wav / positive.txt
+  neutral.wav / neutral_out.wav / neutral.txt
+  negative.wav / negative_out.wav / negative.txt
+  label.txt
+  new_label.txt
+
+Label meaning:
+- label.txt = raw SDS score
+- new_label.txt = standardized SDS score (raw score x 1.25)
+- Derived classification rule used for implementation:
+  depression_label = 1 when standard SDS score >= 53, else 0
+
+Language:
+- Mandarin / Chinese transcripts and speech.
+
+TRAIN AUDIT:
+- Participant folders found: 83
+- Usable participants with all 3 emotion samples: 80
+- Audio-level feature rows created: 240
+- Depressed usable participants: 19
+- Non-depressed usable participants: 61
+- Empty participant folders: 1, 10, 101
+- Participant 102: label.txt missing, but new_label.txt exists and is retained.
+- All selected train audios use valid preprocessed *_out.wav files.
+
+VALIDATION AUDIT:
+- Participant folders found: 79
+- Usable participants: 79
+- Audio-level feature rows created: 237
+- Depressed participants: 11
+- Non-depressed participants: 68
+- Participant 79 positive_out.wav is zero-duration.
+- For participant 79 positive sample, valid raw positive.wav is used as fallback.
+- All other selected validation audios use *_out.wav.
+
+Speech preprocessing applied:
+- Preferred preprocessed *_out.wav
+- Raw *.wav used only as fallback for an unusable preprocessed file
+- Load as mono at 16 kHz for feature extraction
+- Peak amplitude normalization
+- Chinese transcript wording preserved; whitespace normalization only
+- No labels invented
+
+Extracted audio features:
+- 13 MFCC means
+- 13 MFCC standard deviations
+- Pitch mean and standard deviation
+- RMS energy mean and standard deviation
+- Zero-crossing-rate mean and standard deviation
+- Spectral centroid mean and standard deviation
+- Duration
+
+Generated EATD outputs:
+- Processed_EATD\EATD-train-features.csv
+- Processed_EATD\EATD-validation-features.csv
+- Processed_EATD\EATD-train-participant-features.csv
+- Processed_EATD\EATD-validation-participant-features.csv
+- Processed_EATD\EATD-train-preprocessing-report.txt
+- Processed_EATD\EATD-validation-preprocessing-report.txt
+- Processed_EATD\EATD-participant-manifest.csv
+- Processed_EATD\EATD-preprocessing-summary.json
+
+Recommended speech-model files:
+- Train: EATD-train-participant-features.csv
+- Validation: EATD-validation-participant-features.csv
+
+Reason:
+- One row per participant prevents treating the three emotion recordings from the same person as independent people.
+- Participant-level features combine negative, neutral and positive speech signals under one SDS-based label.
+
+--------------------------------------------------------------
+
+3) FINAL PROJECT DATASET STRATEGY
+
+TEXT BRANCH:
+SDCNL -> Suicide-related text classification
+
+SPEECH BRANCH:
+EATD -> Depression/distress speech signal classification
+
+FINAL SYSTEM:
+Do not pretend both datasets have the same ground-truth label.
+Do not directly concatenate SDCNL rows with EATD rows.
+
+Correct design:
+- Text branch produces a suicide-text risk score.
+- Speech branch produces a depression/distress score.
+- Final decision layer combines these as separate screening signals.
+
+This should be described as a multimodal / multi-signal risk-screening prototype,
+not as a clinically validated direct suicide diagnosis system.
+
+--------------------------------------------------------------
+
+4) DATASET STATUS
+
+SDCNL text preprocessing: COMPLETE
+SDCNL train-test leakage check: COMPLETE
+EATD train audit: COMPLETE
+EATD validation audit: COMPLETE
+EATD feature extraction: COMPLETE
+EATD participant manifest: COMPLETE
+
+DATASET PHASE STATUS: READY FOR MODEL IMPLEMENTATION

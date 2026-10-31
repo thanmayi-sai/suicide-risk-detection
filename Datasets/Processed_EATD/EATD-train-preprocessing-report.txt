@@ -1,0 +1,20 @@
+EATD TRAIN PREPROCESSING REPORT
+==========================================
+Participant folders total: 83
+Usable participants (all 3 emotion samples): 80
+Audio-level feature rows: 240
+Depressed participants (SDS standard score >=53): 19
+Non-depressed participants: 61
+
+Audio policy: prefer *_out.wav; fallback to raw *.wav only if *_out.wav is zero-duration/unusable.
+Text policy: preserve Chinese transcript wording; normalize whitespace only.
+Labels: raw label.txt preserved when available; new_label.txt used as standard SDS score.
+No labels were invented.
+
+Extracted features: 13 MFCC means + 13 MFCC stds, pitch mean/std, RMS mean/std,
+zero-crossing-rate mean/std, spectral centroid mean/std, duration.
+
+ANOMALIES:
+{"participant_id": "1", "issue": "empty participant folder"}
+{"participant_id": "10", "issue": "empty participant folder"}
+{"participant_id": "101", "issue": "empty participant folder"}

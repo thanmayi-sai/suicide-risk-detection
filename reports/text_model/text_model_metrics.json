@@ -1,0 +1,32 @@
+{
+  "framework": "PyTorch",
+  "device": "cpu",
+  "seed": 42,
+  "train_rows_total": 1513,
+  "train_rows_model_fit": 1286,
+  "validation_rows": 227,
+  "test_rows": 379,
+  "vocab_size": 9874,
+  "max_sequence_length": 246,
+  "embedding_dim": 128,
+  "lstm_units": 64,
+  "epochs_requested": 20,
+  "epochs_completed": 5,
+  "batch_size": 32,
+  "threshold": 0.5,
+  "accuracy": 0.5936675461741425,
+  "precision": 0.5776892430278885,
+  "recall": 0.7512953367875648,
+  "f1_score": 0.6531531531531531,
+  "roc_auc": 0.6357735807008746,
+  "confusion_matrix": [
+    [
+      80,
+      106
+    ],
+    [
+      48,
+      145
+    ]
+  ]
+}

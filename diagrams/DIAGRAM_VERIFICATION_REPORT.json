@@ -1,0 +1,132 @@
+{
+  "file": "C:\\Users\\RAMESH\\Desktop\\Projects\\Thanmayi 8000\\diagrams\\Thanmayi_Final_System_Design_Diagrams.drawio",
+  "page_count": 6,
+  "pages": [
+    {
+      "name": "1 Architecture - UML Component",
+      "vertices": 14,
+      "edges": 10,
+      "broken_edges": [],
+      "out_of_bounds": [],
+      "box_overlaps": [],
+      "text_preview": [
+        "UML Component Diagram",
+        "Suicide-Risk Detection Using NLP-Based Text and Speech Analysis — Final Corrected Architecture",
+        "> User Interface Text Input | Speech Input | Both",
+        "> Text Processing Component Whitespace Cleaning Tokenization / Model-specific Representation",
+        "> Text Classification Model BiLSTM TF-IDF + Calibrated Linear SVM Frozen BERT Embedding Baseline Current best: SVM (72.56%)",
+        "Text Risk Score P_text (0–1)",
+        "> Speech Processing Component Prefer *_out.wav → Raw fallback if needed Mono 16 kHz + Peak Normalization MFCC, Pitch, RMS, ZCR, Spectral Centroid, Duration",
+        "> Speech Classification Model Participant-level EATD features Model training / selection pending"
+      ]
+    },
+    {
+      "name": "2 Flow Chart",
+      "vertices": 13,
+      "edges": 11,
+      "broken_edges": [],
+      "out_of_bounds": [],
+      "box_overlaps": [],
+      "text_preview": [
+        "System Flow Chart",
+        "Operational flow for Text-only, Speech-only and Combined input modes",
+        "START",
+        "Accept User Input Text / Speech / Both",
+        "Input Mode?",
+        "Text Pipeline Preprocess → Text Model → P_text",
+        "Speech Pipeline Audio Prep → Features → Speech Model → P_speech",
+        "Run Both Branches P_text + P_speech"
+      ]
+    },
+    {
+      "name": "3 Logical Diagram",
+      "vertices": 12,
+      "edges": 8,
+      "broken_edges": [],
+      "out_of_bounds": [],
+      "box_overlaps": [],
+      "text_preview": [
+        "Logical System Diagram",
+        "Layers, model artifacts and information movement",
+        "INPUT LAYER Text • Speech • Both",
+        "PREPROCESSING LAYER Text normalization / tokenization Audio selection / 16kHz normalization",
+        "FEATURE / REPRESENTATION LAYER TF-IDF / embeddings MFCC • Pitch • RMS • ZCR • Spectral",
+        "MODEL LAYER Text classifier Speech distress classifier",
+        "MODEL ARTIFACTS Vectorizer / Vocabulary Scaler / Saved Models",
+        "DECISION LAYER P_text + P_speech Late fusion / documented prototype bands"
+      ]
+    },
+    {
+      "name": "4 Behavioural - Activity Diagram",
+      "vertices": 13,
+      "edges": 11,
+      "broken_edges": [],
+      "out_of_bounds": [],
+      "box_overlaps": [],
+      "text_preview": [
+        "Behavioural Diagram — Activity",
+        "User interaction and system behaviour for Text, Speech and Combined modes",
+        "START",
+        "User submits input Text / Speech / Both",
+        "Determine input mode",
+        "Process text Normalize / tokenize → Text model → P_text",
+        "Process speech Audio prep → Features → Speech model → P_speech",
+        "Process both branches P_text and P_speech"
+      ]
+    },
+    {
+      "name": "5 ER Diagram",
+      "vertices": 10,
+      "edges": 8,
+      "broken_edges": [],
+      "out_of_bounds": [],
+      "box_overlaps": [],
+      "text_preview": [
+        "Conceptual ER Diagram",
+        "Data entities for an implementation-ready application (conceptual, not claiming a deployed database)",
+        "UserSession session_id (PK) created_at input_mode",
+        "TextInput text_id (PK) session_id (FK) model_text",
+        "SpeechInput speech_id (PK) session_id (FK) audio_path duration_sec",
+        "TextPrediction text_prediction_id (PK) session_id (FK) p_text model_name",
+        "SpeechPrediction speech_prediction_id (PK) session_id (FK) p_speech model_name",
+        "FusionResult fusion_id (PK) session_id (FK) combined_score risk_level created_at"
+      ]
+    },
+    {
+      "name": "6 DFD Level 1",
+      "vertices": 12,
+      "edges": 10,
+      "broken_edges": [],
+      "out_of_bounds": [],
+      "box_overlaps": [],
+      "text_preview": [
+        "Data Flow Diagram — Level 1",
+        "Final corrected project data flow",
+        "👤 User",
+        "1.0 Capture Input Text / Speech / Both",
+        "2.0 Text Analysis Preprocess → Model → P_text",
+        "3.0 Speech Analysis Audio Prep → Features → P_speech",
+        "4.0 Fusion & Risk Classification Late Fusion / Decision",
+        "5.0 Guidance & Evaluation Risk result + metrics"
+      ]
+    }
+  ],
+  "required_pages": {
+    "1 Architecture - UML Component": true,
+    "2 Flow Chart": true,
+    "3 Logical Diagram": true,
+    "4 Behavioural - Activity Diagram": true,
+    "5 ER Diagram": true,
+    "6 DFD Level 1": true
+  },
+  "obsolete_terms": {
+    "stopword": false,
+    "noise removal": false,
+    "cnn / lstm": false,
+    "feature fusion": false,
+    "clpsych": false,
+    "speechwellness": false,
+    "distress analysis interview corpus": false
+  },
+  "pass": true
+}

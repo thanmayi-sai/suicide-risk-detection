@@ -1,0 +1,31 @@
+{
+  "best_model": "rbf_k15",
+  "selected_threshold": 0.215,
+  "feature_count_input": 105,
+  "selected_feature_names": [
+    "negative_rms_std",
+    "negative_pitch_mean",
+    "negative_mfcc2_mean",
+    "negative_mfcc6_mean",
+    "neutral_rms_std",
+    "neutral_pitch_mean",
+    "neutral_mfcc2_std",
+    "neutral_mfcc7_std",
+    "neutral_mfcc10_std",
+    "positive_rms_std",
+    "positive_pitch_mean",
+    "positive_mfcc2_mean",
+    "positive_mfcc3_std",
+    "positive_mfcc5_std",
+    "positive_mfcc7_std"
+  ],
+  "selection_method": "5-fold stratified cross-validation on training split only; choose model/k/threshold by OOF F1 then balanced accuracy then ROC-AUC",
+  "validation_policy": "official EATD validation participants used only once after model/threshold selection",
+  "train_participants": 80,
+  "validation_participants": 79,
+  "train_positive": 19,
+  "train_negative": 61,
+  "validation_positive": 11,
+  "validation_negative": 68,
+  "important_limit": "EATD predicts SDS-derived depression/distress, not direct suicide risk."
+}

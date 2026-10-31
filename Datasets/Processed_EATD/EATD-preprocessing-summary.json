@@ -1,0 +1,45 @@
+[
+  {
+    "split": "train",
+    "source_folder": "C:\\Users\\RAMESH\\Desktop\\Projects\\Thanmayi 8000\\Datasets\\train",
+    "participant_folders_total": 83,
+    "usable_participants": 80,
+    "sample_rows": 240,
+    "depressed_participants": 19,
+    "non_depressed_participants": 61,
+    "cutoff_rule": "depression_label = 1 when standard SDS score >= 53",
+    "audio_policy": "Prefer *_out.wav; fallback to raw *.wav only when preprocessed file is zero-duration/unusable",
+    "feature_policy": "mono 16kHz load, peak amplitude normalization, 13 MFCC mean/std, pitch mean/std, RMS mean/std, ZCR mean/std, spectral centroid mean/std, duration",
+    "anomalies": [
+      {
+        "participant_id": "1",
+        "issue": "empty participant folder"
+      },
+      {
+        "participant_id": "10",
+        "issue": "empty participant folder"
+      },
+      {
+        "participant_id": "101",
+        "issue": "empty participant folder"
+      }
+    ],
+    "output_sample_csv": "C:\\Users\\RAMESH\\Desktop\\Projects\\Thanmayi 8000\\Datasets\\Processed_EATD\\EATD-train-features.csv",
+    "output_participant_csv": "C:\\Users\\RAMESH\\Desktop\\Projects\\Thanmayi 8000\\Datasets\\Processed_EATD\\EATD-train-participant-features.csv"
+  },
+  {
+    "split": "validation",
+    "source_folder": "C:\\Users\\RAMESH\\Desktop\\Projects\\Thanmayi 8000\\Datasets\\validation",
+    "participant_folders_total": 79,
+    "usable_participants": 79,
+    "sample_rows": 237,
+    "depressed_participants": 11,
+    "non_depressed_participants": 68,
+    "cutoff_rule": "depression_label = 1 when standard SDS score >= 53",
+    "audio_policy": "Prefer *_out.wav; fallback to raw *.wav only when preprocessed file is zero-duration/unusable",
+    "feature_policy": "mono 16kHz load, peak amplitude normalization, 13 MFCC mean/std, pitch mean/std, RMS mean/std, ZCR mean/std, spectral centroid mean/std, duration",
+    "anomalies": [],
+    "output_sample_csv": "C:\\Users\\RAMESH\\Desktop\\Projects\\Thanmayi 8000\\Datasets\\Processed_EATD\\EATD-validation-features.csv",
+    "output_participant_csv": "C:\\Users\\RAMESH\\Desktop\\Projects\\Thanmayi 8000\\Datasets\\Processed_EATD\\EATD-validation-participant-features.csv"
+  }
+]

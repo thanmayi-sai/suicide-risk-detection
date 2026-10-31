@@ -1,0 +1,138 @@
+{
+  "config": {
+    "model_scope": "single audio acoustic depression/distress estimator",
+    "best_model": "lr_k8_c0.5",
+    "threshold": 0.38,
+    "all_input_features": [
+      "duration_sec",
+      "rms_mean",
+      "rms_std",
+      "zcr_mean",
+      "zcr_std",
+      "spectral_centroid_mean",
+      "spectral_centroid_std",
+      "pitch_mean",
+      "pitch_std",
+      "mfcc1_mean",
+      "mfcc1_std",
+      "mfcc2_mean",
+      "mfcc2_std",
+      "mfcc3_mean",
+      "mfcc3_std",
+      "mfcc4_mean",
+      "mfcc4_std",
+      "mfcc5_mean",
+      "mfcc5_std",
+      "mfcc6_mean",
+      "mfcc6_std",
+      "mfcc7_mean",
+      "mfcc7_std",
+      "mfcc8_mean",
+      "mfcc8_std",
+      "mfcc9_mean",
+      "mfcc9_std",
+      "mfcc10_mean",
+      "mfcc10_std",
+      "mfcc11_mean",
+      "mfcc11_std",
+      "mfcc12_mean",
+      "mfcc12_std",
+      "mfcc13_mean",
+      "mfcc13_std"
+    ],
+    "selected_features": [
+      "rms_std",
+      "pitch_mean",
+      "mfcc2_mean",
+      "mfcc3_std",
+      "mfcc5_std",
+      "mfcc7_std",
+      "mfcc8_std",
+      "mfcc10_std"
+    ],
+    "train_audio_rows": 240,
+    "validation_audio_rows": 237,
+    "train_participants": 80,
+    "validation_participants": 79,
+    "cv": "5-fold StratifiedGroupKFold by participant; no participant crosses train CV folds",
+    "selection": "participant-aggregated OOF F1, then balanced accuracy, then ROC-AUC",
+    "final_validation": "official EATD validation split only after selection",
+    "important_limit": "EATD outcome is SDS-derived depression/distress; not direct suicide risk."
+  },
+  "training_grouped_oof_participant_metrics": {
+    "threshold": 0.38,
+    "accuracy": 0.6,
+    "balanced_accuracy": 0.6471095772217428,
+    "precision": 0.34146341463414637,
+    "recall": 0.7368421052631579,
+    "f1_score": 0.4666666666666667,
+    "roc_auc": 0.5823986194995686,
+    "confusion_matrix": [
+      [
+        34,
+        27
+      ],
+      [
+        5,
+        14
+      ]
+    ]
+  },
+  "official_validation_sample_level_metrics": {
+    "threshold": 0.38,
+    "accuracy": 0.5949367088607594,
+    "balanced_accuracy": 0.5741978609625669,
+    "precision": 0.18181818181818182,
+    "recall": 0.5454545454545454,
+    "f1_score": 0.2727272727272727,
+    "roc_auc": 0.5842245989304813,
+    "confusion_matrix": [
+      [
+        123,
+        81
+      ],
+      [
+        15,
+        18
+      ]
+    ]
+  },
+  "official_validation_participant_aggregated_metrics": {
+    "threshold": 0.38,
+    "accuracy": 0.6329113924050633,
+    "balanced_accuracy": 0.6343582887700534,
+    "precision": 0.21875,
+    "recall": 0.6363636363636364,
+    "f1_score": 0.32558139534883723,
+    "roc_auc": 0.5922459893048129,
+    "confusion_matrix": [
+      [
+        43,
+        25
+      ],
+      [
+        4,
+        7
+      ]
+    ]
+  },
+  "official_validation_participant_default_0.5_metrics": {
+    "threshold": 0.5,
+    "accuracy": 0.7215189873417721,
+    "balanced_accuracy": 0.5334224598930482,
+    "precision": 0.17647058823529413,
+    "recall": 0.2727272727272727,
+    "f1_score": 0.21428571428571427,
+    "roc_auc": 0.5922459893048129,
+    "confusion_matrix": [
+      [
+        54,
+        14
+      ],
+      [
+        8,
+        3
+      ]
+    ]
+  }
+}

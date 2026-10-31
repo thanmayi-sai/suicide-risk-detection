@@ -1,0 +1,35 @@
+THANMAYI PROJECT DIAGRAM VERIFICATION
+============================================================
+File: C:\Users\RAMESH\Desktop\Projects\Thanmayi 8000\diagrams\Thanmayi_Final_System_Design_Diagrams.drawio
+Pages: 6
+
+1 Architecture - UML Component: vertices=14, edges=10, broken_edges=0, overlaps=0, out_of_bounds=0
+
+2 Flow Chart: vertices=13, edges=11, broken_edges=0, overlaps=0, out_of_bounds=0
+
+3 Logical Diagram: vertices=12, edges=8, broken_edges=0, overlaps=0, out_of_bounds=0
+
+4 Behavioural - Activity Diagram: vertices=13, edges=11, broken_edges=0, overlaps=0, out_of_bounds=0
+
+5 ER Diagram: vertices=10, edges=8, broken_edges=0, overlaps=0, out_of_bounds=0
+
+6 DFD Level 1: vertices=12, edges=10, broken_edges=0, overlaps=0, out_of_bounds=0
+
+Required pages:
+- 1 Architecture - UML Component: PASS
+- 2 Flow Chart: PASS
+- 3 Logical Diagram: PASS
+- 4 Behavioural - Activity Diagram: PASS
+- 5 ER Diagram: PASS
+- 6 DFD Level 1: PASS
+
+Obsolete-term scan:
+- stopword: not found
+- noise removal: not found
+- cnn / lstm: not found
+- feature fusion: not found
+- clpsych: not found
+- speechwellness: not found
+- distress analysis interview corpus: not found
+
+OVERALL: PASS

@@ -1,0 +1,98 @@
+TRAINING SET PREPROCESSING REPORT
+=================================
+
+Scope
+-----
+Processed file: training-set(2).csv (uploaded training set only)
+No testing-set.csv or combined-set.csv was processed.
+
+Original Dataset Inspection
+---------------------------
+Original row count: 1516
+Column names:
+  - "" (blank/unnamed index column)
+  - title
+  - selftext
+  - author
+  - num_comments
+  - is_suicide
+  - url
+  - selftext_clean
+  - title_clean
+  - author_clean
+  - selftext_length
+  - title_length
+  - megatext_clean
+
+Inferred data types (from CSV values):
+  - "" (blank/unnamed index column): int
+  - title: str
+  - selftext: str
+  - author: str
+  - num_comments: int
+  - is_suicide: int
+  - url: str
+  - selftext_clean: str
+  - title_clean: str
+  - author_clean: str
+  - selftext_length: int
+  - title_length: int
+  - megatext_clean: str
+
+Missing values:
+  - "" (blank/unnamed index column): 0
+  - title: 0
+  - selftext: 0
+  - author: 0
+  - num_comments: 0
+  - is_suicide: 0
+  - url: 0
+  - selftext_clean: 1
+  - title_clean: 18
+  - author_clean: 2
+  - selftext_length: 0
+  - title_length: 0
+  - megatext_clean: 0
+
+Exact duplicate full rows (occurrences beyond first): 0
+Exact duplicate full-row groups: 0
+Duplicate megatext_clean rows (occurrences beyond first, before normalization): 7
+Duplicate megatext_clean groups (before normalization): 7
+Repeated normalized text values with conflicting labels (preserved, not removed across labels): 4
+
+Original is_suicide label distribution:
+  - 0: 729
+  - 1: 787
+
+Preprocessing Summary
+---------------------
+Selected text column: megatext_clean
+Label column: is_suicide
+Original row count: 1516
+Empty rows removed: 0
+Duplicate rows removed (same normalized model_text + same is_suicide): 3
+Final row count: 1513
+
+Final label distribution:
+  - 0: 727
+  - 1: 786
+
+Preprocessing Rules Applied
+---------------------------
+1. Used megatext_clean as the primary model input text column because it exists and contains no empty/null values.
+2. Removed the unnamed index-like column with the blank header (equivalent to an unwanted "Unnamed: 0"-style export index).
+3. Removed any row whose selected text field was null, empty, or whitespace-only after trimming.
+4. Normalized whitespace only: trimmed leading/trailing whitespace and collapsed internal whitespace runs to a single space.
+5. Did not rewrite, paraphrase, stem, translate, censor, or otherwise alter text meaning.
+6. Removed duplicate records only when normalized model_text and is_suicide were both identical; kept the first occurrence.
+7. Preserved records where identical text appeared with different labels; no relabeling was performed.
+8. Preserved the label column is_suicide and accepted only the original valid binary labels 0 and 1.
+9. Generated a new sequential record_id for the cleaned output.
+10. Output contains only record_id, model_text, and is_suicide.
+
+Verification
+------------
+No empty model_text: PASS
+No exact duplicate model_text + is_suicide: PASS
+Labels valid (0/1 only): PASS
+Row count consistency: PASS

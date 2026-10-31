@@ -1,0 +1,51 @@
+TRAIN-TEST LEAKAGE REPORT
+=========================
+
+Scope
+-----
+Compared only training-set-clean.csv and testing-set-clean.csv.
+combined-set-clean.csv was not used.
+
+Normalization for leakage comparison
+-----------------------------------
+Applied only:
+  - case normalization using casefold()
+  - whitespace normalization by trimming edges and collapsing whitespace runs to one space
+No wording, semantics, punctuation, or labels were changed for comparison.
+
+Original split
+--------------
+Original train rows: 1513
+Original test rows: 379
+
+Overlap counts
+--------------
+Exact overlapping normalized model_text count: 0
+Overlapping test rows by normalized model_text: 0
+Overlapping normalized model_text + is_suicide test-row count: 0
+Same normalized model_text with conflicting labels: 0
+Exact full-row overlap count: 0
+
+Leakage removal
+---------------
+Training data changed: No
+Rows removed from test: 0
+Final test row count: 379
+
+Final train label distribution
+------------------------------
+  - 0: 727
+  - 1: 786
+
+Final test label distribution
+-----------------------------
+  - 0: 186
+  - 1: 193
+
+Verification
+------------
+No train-test normalized model_text overlap remains: PASS
+No empty model_text in final test: PASS
+Labels only 0 and 1 in train: PASS
+Labels only 0 and 1 in final test: PASS
+Final test row count consistency: PASS

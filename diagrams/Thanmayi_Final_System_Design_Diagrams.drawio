@@ -1,0 +1,447 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mxfile host="app.diagrams.net" modified="2026-10-26T00:00:00.000Z" agent="ChatGPT" version="24.7.17" compressed="false">
+  <diagram name="1 Architecture - UML Component" id="1_Architecture_-_UML_Component">
+    <mxGraphModel dx="1600" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="&lt;b&gt;UML Component Diagram&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#15365C;fontSize=28;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="70" y="25" width="1460" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="subtitle" value="Suicide-Risk Detection Using NLP-Based Text and Speech Analysis — Final Corrected Architecture" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#5B6573;fontSize=15;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="90" y="70" width="1420" height="32" as="geometry"/>
+        </mxCell>
+        <mxCell id="ui" value="&amp;lt;&amp;lt;component&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;User Interface&lt;/b&gt;&lt;br&gt;&lt;br&gt;Text Input &amp;nbsp;&amp;nbsp; | &amp;nbsp;&amp;nbsp; Speech Input &amp;nbsp;&amp;nbsp; | &amp;nbsp;&amp;nbsp; Both" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E9E1F8;strokeColor=#7E57C2;strokeWidth=2;fontColor=#15365C;fontSize=17;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="520" y="105" width="560" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="tp" value="&amp;lt;&amp;lt;component&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;Text Processing Component&lt;/b&gt;&lt;br&gt;&lt;br&gt;Whitespace Cleaning&lt;br&gt;Tokenization / Model-specific Representation" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DCEEFF;strokeColor=#3C78B5;strokeWidth=2;fontColor=#15365C;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="80" y="270" width="400" height="145" as="geometry"/>
+        </mxCell>
+        <mxCell id="tm" value="&amp;lt;&amp;lt;component&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;Text Classification Model&lt;/b&gt;&lt;br&gt;&lt;br&gt;BiLSTM&lt;br&gt;TF-IDF + Calibrated Linear SVM&lt;br&gt;Frozen BERT Embedding Baseline&lt;br&gt;&lt;b&gt;Current best: SVM (72.56%)&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DCEEFF;strokeColor=#3C78B5;strokeWidth=2;fontColor=#15365C;fontSize=15;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="80" y="485" width="400" height="175" as="geometry"/>
+        </mxCell>
+        <mxCell id="ps" value="&lt;b&gt;Text Risk Score&lt;/b&gt;&lt;br&gt;P_text (0–1)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8DDE8;strokeColor=#C84B77;strokeWidth=2;fontColor=#15365C;fontSize=17;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="160" y="710" width="240" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="sp" value="&amp;lt;&amp;lt;component&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;Speech Processing Component&lt;/b&gt;&lt;br&gt;&lt;br&gt;Prefer *_out.wav → Raw fallback if needed&lt;br&gt;Mono 16 kHz + Peak Normalization&lt;br&gt;MFCC, Pitch, RMS, ZCR, Spectral Centroid, Duration" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FCE6C8;strokeColor=#C98B2E;strokeWidth=2;fontColor=#15365C;fontSize=15;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="590" y="270" width="420" height="160" as="geometry"/>
+        </mxCell>
+        <mxCell id="sm" value="&amp;lt;&amp;lt;component&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;Speech Classification Model&lt;/b&gt;&lt;br&gt;&lt;br&gt;Participant-level EATD features&lt;br&gt;&lt;b&gt;Model training / selection pending&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FCE6C8;strokeColor=#C98B2E;strokeWidth=2;fontColor=#15365C;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="590" y="505" width="420" height="135" as="geometry"/>
+        </mxCell>
+        <mxCell id="ss" value="&lt;b&gt;Speech Distress Score&lt;/b&gt;&lt;br&gt;P_speech (0–1)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8DDE8;strokeColor=#C84B77;strokeWidth=2;fontColor=#15365C;fontSize=17;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="680" y="710" width="240" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="fu" value="&amp;lt;&amp;lt;component&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;Late Fusion / Decision Engine&lt;/b&gt;&lt;br&gt;&lt;br&gt;Combine branch scores only&lt;br&gt;No row-wise dataset merge&lt;br&gt;Prototype weights / bands documented" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DFF1DF;strokeColor=#4F8A4F;strokeWidth=2;fontColor=#15365C;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="300" width="390" height="160" as="geometry"/>
+        </mxCell>
+        <mxCell id="rc" value="&amp;lt;&amp;lt;component&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;Final Risk Classification&lt;/b&gt;&lt;br&gt;&lt;br&gt;Low / Moderate / High&lt;br&gt;&lt;small&gt;Research screening categories&lt;/small&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8DDE8;strokeColor=#C84B77;strokeWidth=2;fontColor=#15365C;fontSize=17;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1120" y="505" width="390" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="ev" value="&amp;lt;&amp;lt;component&amp;gt;&amp;gt;&lt;br&gt;&lt;b&gt;Evaluation &amp; Support Guidance&lt;/b&gt;&lt;br&gt;&lt;br&gt;Accuracy • Precision • Recall • F1 • ROC-AUC • Confusion Matrix&lt;br&gt;Risk-based support guidance" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E9E1F8;strokeColor=#7E57C2;strokeWidth=2;fontColor=#15365C;fontSize=14;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1090" y="680" width="450" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="e1" value="Text data" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#15365C;strokeWidth=2;fontSize=13;fontColor=#5B6573;" edge="1" parent="1" source="ui" target="tp">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" value="Audio data" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#15365C;strokeWidth=2;fontSize=13;fontColor=#5B6573;" edge="1" parent="1" source="ui" target="sp">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#15365C;strokeWidth=2;fontSize=13;fontColor=#5B6573;" edge="1" parent="1" source="tp" target="tm">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e4" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#15365C;strokeWidth=2;fontSize=13;fontColor=#5B6573;" edge="1" parent="1" source="tm" target="ps">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#15365C;strokeWidth=2;fontSize=13;fontColor=#5B6573;" edge="1" parent="1" source="sp" target="sm">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#15365C;strokeWidth=2;fontSize=13;fontColor=#5B6573;" edge="1" parent="1" source="sm" target="ss">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e7" value="P_text" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#3C78B5;strokeWidth=2;fontSize=13;fontColor=#5B6573;" edge="1" parent="1" source="ps" target="fu">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e8" value="P_speech" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#C98B2E;strokeWidth=2;fontSize=13;fontColor=#5B6573;" edge="1" parent="1" source="ss" target="fu">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#15365C;strokeWidth=2;fontSize=13;fontColor=#5B6573;" edge="1" parent="1" source="fu" target="rc">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#15365C;strokeWidth=2;fontSize=13;fontColor=#5B6573;" edge="1" parent="1" source="rc" target="ev">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="note" value="&lt;b&gt;Datasets:&lt;/b&gt; SDCNL / Reddit → text branch &amp;nbsp;&amp;nbsp; | &amp;nbsp;&amp;nbsp; EATD-Corpus → speech/distress branch" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#5B6573;fontSize=13;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="430" y="815" width="750" height="28" as="geometry"/>
+        </mxCell>
+        <mxCell id="footer" value="KNBC RAMESH SOFTWARE SOLUTIONS AND DIGITAL MARKETING - 7075960032" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#15365C;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="850" width="1120" height="28" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="2 Flow Chart" id="2_Flow_Chart">
+    <mxGraphModel dx="1600" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="&lt;b&gt;System Flow Chart&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#15365C;fontSize=28;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="70" y="25" width="1460" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="subtitle" value="Operational flow for Text-only, Speech-only and Combined input modes" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#5B6573;fontSize=15;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="90" y="70" width="1420" height="32" as="geometry"/>
+        </mxCell>
+        <mxCell id="start" value="START" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DFF1DF;strokeColor=#4F8A4F;strokeWidth=2;fontColor=#15365C;fontSize=18;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="690" y="105" width="220" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="inp" value="Accept User Input&lt;br&gt;Text / Speech / Both" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E9E1F8;strokeColor=#7E57C2;strokeWidth=2;fontColor=#15365C;fontSize=17;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="640" y="205" width="320" height="85" as="geometry"/>
+        </mxCell>
+        <mxCell id="mode" value="Input Mode?" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F7F9FC;strokeColor=#15365C;strokeWidth=2;fontColor=#15365C;fontSize=18;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="680" y="340" width="240" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="tproc" value="Text Pipeline&lt;br&gt;Preprocess → Text Model → P_text" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DCEEFF;strokeColor=#3C78B5;strokeWidth=2;fontColor=#15365C;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="160" y="475" width="350" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="sproc" value="Speech Pipeline&lt;br&gt;Audio Prep → Features → Speech Model → P_speech" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FCE6C8;strokeColor=#C98B2E;strokeWidth=2;fontColor=#15365C;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="625" y="475" width="350" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="both" value="Run Both Branches&lt;br&gt;P_text + P_speech" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DFF1DF;strokeColor=#4F8A4F;strokeWidth=2;fontColor=#15365C;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1090" y="475" width="350" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="dec1" value="Decision Layer&lt;br&gt;Use available branch score" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DFF1DF;strokeColor=#4F8A4F;strokeWidth=2;fontColor=#15365C;fontSize=15;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="160" y="650" width="350" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="dec2" value="Decision Layer&lt;br&gt;Use available branch score" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DFF1DF;strokeColor=#4F8A4F;strokeWidth=2;fontColor=#15365C;fontSize=15;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="625" y="650" width="350" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="fusion" value="Late Fusion / Prototype Decision&lt;br&gt;Combine separate scores" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DFF1DF;strokeColor=#4F8A4F;strokeWidth=2;fontColor=#15365C;fontSize=15;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1090" y="650" width="350" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="risk" value="Final Screening Result&lt;br&gt;&lt;b&gt;Low / Moderate / High&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8DDE8;strokeColor=#C84B77;strokeWidth=2;fontColor=#15365C;fontSize=17;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="620" y="750" width="360" height="75" as="geometry"/>
+        </mxCell>
+        <mxCell id="f1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#15365C;strokeWidth=2;fontSize=13;fontColor=#5B6573;" edge="1" parent="1" source="start" target="inp">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="f2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#15365C;strokeWidth=2;fontSize=13;fontColor=#5B6573;" edge="1" parent="1" source="inp" target="mode">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="f3" value="Text" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#15365C;strokeWidth=2;fontSize=13;fontColor=#5B6573;" edge="1" parent="1" source="mode" target="tproc">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="f4" value="Speech" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#15365C;strokeWidth=2;fontSize=13;fontColor=#5B6573;" edge="1" parent="1" source="mode" target="sproc">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="f5" value="Both" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#15365C;strokeWidth=2;fontSize=13;fontColor=#5B6573;" edge="1" parent="1" source="mode" target="both">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="f6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#15365C;strokeWidth=2;fontSize=13;fontColor=#5B6573;" edge="1" parent="1" source="tproc" target="dec1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="f7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#15365C;strokeWidth=2;fontSize=13;fontColor=#5B6573;" edge="1" parent="1" source="sproc" target="dec2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="f8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#15365C;strokeWidth=2;fontSize=13;fontColor=#5B6573;" edge="1" parent="1" source="both" target="fusion">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="f9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#15365C;strokeWidth=2;fontSize=13;fontColor=#5B6573;" edge="1" parent="1" source="dec1" target="risk">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="f10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#15365C;strokeWidth=2;fontSize=13;fontColor=#5B6573;" edge="1" parent="1" source="dec2" target="risk">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="f11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#15365C;strokeWidth=2;fontSize=13;fontColor=#5B6573;" edge="1" parent="1" source="fusion" target="risk">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="footer" value="KNBC RAMESH SOFTWARE SOLUTIONS AND DIGITAL MARKETING - 7075960032" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#15365C;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="850" width="1120" height="28" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="3 Logical Diagram" id="3_Logical_Diagram">
+    <mxGraphModel dx="1600" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="&lt;b&gt;Logical System Diagram&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#15365C;fontSize=28;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="70" y="25" width="1460" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="subtitle" value="Layers, model artifacts and information movement" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#5B6573;fontSize=15;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="90" y="70" width="1420" height="32" as="geometry"/>
+        </mxCell>
+        <mxCell id="inputL" value="INPUT LAYER&lt;br&gt;&lt;br&gt;Text • Speech • Both" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E9E1F8;strokeColor=#7E57C2;strokeWidth=2;fontColor=#15365C;fontSize=18;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="90" y="135" width="280" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="prepL" value="PREPROCESSING LAYER&lt;br&gt;&lt;br&gt;Text normalization / tokenization&lt;br&gt;Audio selection / 16kHz normalization" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F7F9FC;strokeColor=#15365C;strokeWidth=2;fontColor=#15365C;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="450" y="135" width="350" height="135" as="geometry"/>
+        </mxCell>
+        <mxCell id="featL" value="FEATURE / REPRESENTATION LAYER&lt;br&gt;&lt;br&gt;TF-IDF / embeddings&lt;br&gt;MFCC • Pitch • RMS • ZCR • Spectral" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DCEEFF;strokeColor=#3C78B5;strokeWidth=2;fontColor=#15365C;fontSize=15;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="890" y="135" width="390" height="145" as="geometry"/>
+        </mxCell>
+        <mxCell id="modelL" value="MODEL LAYER&lt;br&gt;&lt;br&gt;Text classifier&lt;br&gt;Speech distress classifier" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FCE6C8;strokeColor=#C98B2E;strokeWidth=2;fontColor=#15365C;fontSize=17;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="470" y="390" width="340" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="art" value="MODEL ARTIFACTS&lt;br&gt;&lt;br&gt;Vectorizer / Vocabulary&lt;br&gt;Scaler / Saved Models" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F7F9FC;strokeColor=#15365C;strokeWidth=2;fontColor=#15365C;fontSize=15;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="90" y="390" width="280" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="decisionL" value="DECISION LAYER&lt;br&gt;&lt;br&gt;P_text + P_speech&lt;br&gt;Late fusion / documented prototype bands" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DFF1DF;strokeColor=#4F8A4F;strokeWidth=2;fontColor=#15365C;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="900" y="390" width="380" height="135" as="geometry"/>
+        </mxCell>
+        <mxCell id="outputL" value="OUTPUT LAYER&lt;br&gt;&lt;br&gt;Low / Moderate / High&lt;br&gt;Branch scores + Guidance" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8DDE8;strokeColor=#C84B77;strokeWidth=2;fontColor=#15365C;fontSize=17;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="650" y="650" width="330" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="evalL" value="EVALUATION&lt;br&gt;&lt;br&gt;Accuracy • Precision • Recall&lt;br&gt;F1 • ROC-AUC • Confusion Matrix" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E9E1F8;strokeColor=#7E57C2;strokeWidth=2;fontColor=#15365C;fontSize=14;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1090" y="650" width="360" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="dataL" value="DATA SOURCES&lt;br&gt;&lt;br&gt;SDCNL Text Dataset&lt;br&gt;EATD-Corpus" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DCEEFF;strokeColor=#3C78B5;strokeWidth=2;fontColor=#15365C;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="120" y="650" width="300" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="l1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#15365C;strokeWidth=2;fontSize=13;fontColor=#5B6573;" edge="1" parent="1" source="inputL" target="prepL">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="l2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#15365C;strokeWidth=2;fontSize=13;fontColor=#5B6573;" edge="1" parent="1" source="prepL" target="featL">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="l3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#15365C;strokeWidth=2;fontSize=13;fontColor=#5B6573;" edge="1" parent="1" source="featL" target="modelL">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="l4" value="load" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#15365C;strokeWidth=2;fontSize=13;fontColor=#5B6573;" edge="1" parent="1" source="art" target="modelL">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="l5" value="scores" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#15365C;strokeWidth=2;fontSize=13;fontColor=#5B6573;" edge="1" parent="1" source="modelL" target="decisionL">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="l6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#15365C;strokeWidth=2;fontSize=13;fontColor=#5B6573;" edge="1" parent="1" source="decisionL" target="outputL">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="l7" value="predictions" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#15365C;strokeWidth=2;fontSize=13;fontColor=#5B6573;" edge="1" parent="1" source="outputL" target="evalL">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="l8" value="training / validation" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#5B6573;strokeWidth=2;dashed=1;fontSize=13;fontColor=#5B6573;" edge="1" parent="1" source="dataL" target="prepL">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="footer" value="KNBC RAMESH SOFTWARE SOLUTIONS AND DIGITAL MARKETING - 7075960032" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#15365C;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="850" width="1120" height="28" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="4 Behavioural - Activity Diagram" id="4_Behavioural_-_Activity_Diagram">
+    <mxGraphModel dx="1600" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="&lt;b&gt;Behavioural Diagram — Activity&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#15365C;fontSize=28;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="70" y="25" width="1460" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="subtitle" value="User interaction and system behaviour for Text, Speech and Combined modes" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#5B6573;fontSize=15;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="90" y="70" width="1420" height="32" as="geometry"/>
+        </mxCell>
+        <mxCell id="b_start" value="START" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DFF1DF;strokeColor=#4F8A4F;strokeWidth=2;fontColor=#15365C;fontSize=18;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="690" y="110" width="220" height="55" as="geometry"/>
+        </mxCell>
+        <mxCell id="b_input" value="User submits input&lt;br&gt;Text / Speech / Both" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E9E1F8;strokeColor=#7E57C2;strokeWidth=2;fontColor=#15365C;fontSize=17;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="620" y="205" width="360" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="b_mode" value="Determine input mode" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F7F9FC;strokeColor=#15365C;strokeWidth=2;fontColor=#15365C;fontSize=17;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="665" y="335" width="270" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="b_text" value="Process text&lt;br&gt;Normalize / tokenize → Text model → P_text" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DCEEFF;strokeColor=#3C78B5;strokeWidth=2;fontColor=#15365C;fontSize=15;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="140" y="475" width="360" height="115" as="geometry"/>
+        </mxCell>
+        <mxCell id="b_speech" value="Process speech&lt;br&gt;Audio prep → Features → Speech model → P_speech" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FCE6C8;strokeColor=#C98B2E;strokeWidth=2;fontColor=#15365C;fontSize=15;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="620" y="475" width="360" height="115" as="geometry"/>
+        </mxCell>
+        <mxCell id="b_both" value="Process both branches&lt;br&gt;P_text and P_speech" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DFF1DF;strokeColor=#4F8A4F;strokeWidth=2;fontColor=#15365C;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1100" y="475" width="360" height="115" as="geometry"/>
+        </mxCell>
+        <mxCell id="b_dec_text" value="Single-branch decision&lt;br&gt;Use P_text" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DFF1DF;strokeColor=#4F8A4F;strokeWidth=2;fontColor=#15365C;fontSize=15;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="170" y="655" width="300" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="b_dec_speech" value="Single-branch decision&lt;br&gt;Use P_speech" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DFF1DF;strokeColor=#4F8A4F;strokeWidth=2;fontColor=#15365C;fontSize=15;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="650" y="655" width="300" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="b_fusion" value="Late fusion / prototype decision&lt;br&gt;Combine branch scores only" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DFF1DF;strokeColor=#4F8A4F;strokeWidth=2;fontColor=#15365C;fontSize=15;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1115" y="650" width="330" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="b_result" value="Display final screening result&lt;br&gt;&lt;b&gt;Low / Moderate / High&lt;/b&gt;&lt;br&gt;+ branch scores + guidance" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8DDE8;strokeColor=#C84B77;strokeWidth=2;fontColor=#15365C;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="585" y="755" width="430" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="ba1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#15365C;strokeWidth=2;fontSize=13;fontColor=#5B6573;" edge="1" parent="1" source="b_start" target="b_input">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="ba2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#15365C;strokeWidth=2;fontSize=13;fontColor=#5B6573;" edge="1" parent="1" source="b_input" target="b_mode">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="ba3" value="Text" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#15365C;strokeWidth=2;fontSize=13;fontColor=#5B6573;" edge="1" parent="1" source="b_mode" target="b_text">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="ba4" value="Speech" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#15365C;strokeWidth=2;fontSize=13;fontColor=#5B6573;" edge="1" parent="1" source="b_mode" target="b_speech">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="ba5" value="Both" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#15365C;strokeWidth=2;fontSize=13;fontColor=#5B6573;" edge="1" parent="1" source="b_mode" target="b_both">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="ba6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#15365C;strokeWidth=2;fontSize=13;fontColor=#5B6573;" edge="1" parent="1" source="b_text" target="b_dec_text">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="ba7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#15365C;strokeWidth=2;fontSize=13;fontColor=#5B6573;" edge="1" parent="1" source="b_speech" target="b_dec_speech">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="ba8" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#15365C;strokeWidth=2;fontSize=13;fontColor=#5B6573;" edge="1" parent="1" source="b_both" target="b_fusion">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="ba9" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#15365C;strokeWidth=2;fontSize=13;fontColor=#5B6573;" edge="1" parent="1" source="b_dec_text" target="b_result">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="ba10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#15365C;strokeWidth=2;fontSize=13;fontColor=#5B6573;" edge="1" parent="1" source="b_dec_speech" target="b_result">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="ba11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#15365C;strokeWidth=2;fontSize=13;fontColor=#5B6573;" edge="1" parent="1" source="b_fusion" target="b_result">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="footer" value="KNBC RAMESH SOFTWARE SOLUTIONS AND DIGITAL MARKETING - 7075960032" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#15365C;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="850" width="1120" height="28" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="5 ER Diagram" id="5_ER_Diagram">
+    <mxGraphModel dx="1600" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="&lt;b&gt;Conceptual ER Diagram&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#15365C;fontSize=28;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="70" y="25" width="1460" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="subtitle" value="Data entities for an implementation-ready application (conceptual, not claiming a deployed database)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#5B6573;fontSize=15;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="90" y="70" width="1420" height="32" as="geometry"/>
+        </mxCell>
+        <mxCell id="sess" value="&lt;b&gt;UserSession&lt;/b&gt;&lt;hr&gt;session_id (PK)&lt;br&gt;created_at&lt;br&gt;input_mode" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F7F9FC;strokeColor=#15365C;strokeWidth=2;fontColor=#15365C;fontSize=14;fontStyle=1;align=left;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="80" y="140" width="300" height="170" as="geometry"/>
+        </mxCell>
+        <mxCell id="txt" value="&lt;b&gt;TextInput&lt;/b&gt;&lt;hr&gt;text_id (PK)&lt;br&gt;session_id (FK)&lt;br&gt;model_text" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F7F9FC;strokeColor=#15365C;strokeWidth=2;fontColor=#15365C;fontSize=14;fontStyle=1;align=left;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="460" y="120" width="300" height="170" as="geometry"/>
+        </mxCell>
+        <mxCell id="aud" value="&lt;b&gt;SpeechInput&lt;/b&gt;&lt;hr&gt;speech_id (PK)&lt;br&gt;session_id (FK)&lt;br&gt;audio_path&lt;br&gt;duration_sec" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F7F9FC;strokeColor=#15365C;strokeWidth=2;fontColor=#15365C;fontSize=14;fontStyle=1;align=left;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="460" y="360" width="300" height="170" as="geometry"/>
+        </mxCell>
+        <mxCell id="tpred" value="&lt;b&gt;TextPrediction&lt;/b&gt;&lt;hr&gt;text_prediction_id (PK)&lt;br&gt;session_id (FK)&lt;br&gt;p_text&lt;br&gt;model_name" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F7F9FC;strokeColor=#15365C;strokeWidth=2;fontColor=#15365C;fontSize=14;fontStyle=1;align=left;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="850" y="115" width="300" height="170" as="geometry"/>
+        </mxCell>
+        <mxCell id="spred" value="&lt;b&gt;SpeechPrediction&lt;/b&gt;&lt;hr&gt;speech_prediction_id (PK)&lt;br&gt;session_id (FK)&lt;br&gt;p_speech&lt;br&gt;model_name" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F7F9FC;strokeColor=#15365C;strokeWidth=2;fontColor=#15365C;fontSize=14;fontStyle=1;align=left;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="850" y="360" width="300" height="170" as="geometry"/>
+        </mxCell>
+        <mxCell id="fres" value="&lt;b&gt;FusionResult&lt;/b&gt;&lt;hr&gt;fusion_id (PK)&lt;br&gt;session_id (FK)&lt;br&gt;combined_score&lt;br&gt;risk_level&lt;br&gt;created_at" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DFF1DF;strokeColor=#4F8A4F;strokeWidth=2;fontColor=#15365C;fontSize=14;fontStyle=1;align=left;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1230" y="235" width="300" height="170" as="geometry"/>
+        </mxCell>
+        <mxCell id="met" value="&lt;b&gt;EvaluationMetric&lt;/b&gt;&lt;hr&gt;metric_id (PK)&lt;br&gt;model_type&lt;br&gt;accuracy&lt;br&gt;precision&lt;br&gt;recall&lt;br&gt;f1&lt;br&gt;roc_auc" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E9E1F8;strokeColor=#7E57C2;strokeWidth=2;fontColor=#15365C;fontSize=14;fontStyle=1;align=left;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="850" y="625" width="300" height="170" as="geometry"/>
+        </mxCell>
+        <mxCell id="er1" value="1 : 0..1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#15365C;strokeWidth=2;fontSize=13;fontColor=#5B6573;" edge="1" parent="1" source="sess" target="txt">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="er2" value="1 : 0..1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#15365C;strokeWidth=2;fontSize=13;fontColor=#5B6573;" edge="1" parent="1" source="sess" target="aud">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="er3" value="1 : 0..1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#15365C;strokeWidth=2;fontSize=13;fontColor=#5B6573;" edge="1" parent="1" source="sess" target="tpred">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="er4" value="1 : 0..1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#15365C;strokeWidth=2;fontSize=13;fontColor=#5B6573;" edge="1" parent="1" source="sess" target="spred">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="er5" value="0..1 : 1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#15365C;strokeWidth=2;fontSize=13;fontColor=#5B6573;" edge="1" parent="1" source="tpred" target="fres">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="er6" value="0..1 : 1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#15365C;strokeWidth=2;fontSize=13;fontColor=#5B6573;" edge="1" parent="1" source="spred" target="fres">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="er7" value="evaluated by" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#5B6573;strokeWidth=2;dashed=1;fontSize=13;fontColor=#5B6573;" edge="1" parent="1" source="tpred" target="met">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="er8" value="evaluated by" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#5B6573;strokeWidth=2;dashed=1;fontSize=13;fontColor=#5B6573;" edge="1" parent="1" source="spred" target="met">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="footer" value="KNBC RAMESH SOFTWARE SOLUTIONS AND DIGITAL MARKETING - 7075960032" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#15365C;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="850" width="1120" height="28" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="6 DFD Level 1" id="6_DFD_Level_1">
+    <mxGraphModel dx="1600" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="&lt;b&gt;Data Flow Diagram — Level 1&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#15365C;fontSize=28;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="70" y="25" width="1460" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="subtitle" value="Final corrected project data flow" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#5B6573;fontSize=15;fontStyle=0;" vertex="1" parent="1">
+          <mxGeometry x="90" y="70" width="1420" height="32" as="geometry"/>
+        </mxCell>
+        <mxCell id="ext" value="👤&lt;br&gt;&lt;b&gt;User&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F7F9FC;strokeColor=#15365C;strokeWidth=2;fontColor=#15365C;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="65" y="360" width="120" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="p1" value="1.0&lt;br&gt;&lt;b&gt;Capture Input&lt;/b&gt;&lt;br&gt;Text / Speech / Both" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#E9E1F8;strokeColor=#7E57C2;strokeWidth=2;fontColor=#15365C;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="300" y="330" width="230" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="p2" value="2.0&lt;br&gt;&lt;b&gt;Text Analysis&lt;/b&gt;&lt;br&gt;Preprocess → Model → P_text" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DCEEFF;strokeColor=#3C78B5;strokeWidth=2;fontColor=#15365C;fontSize=15;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="620" y="170" width="270" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="p3" value="3.0&lt;br&gt;&lt;b&gt;Speech Analysis&lt;/b&gt;&lt;br&gt;Audio Prep → Features → P_speech" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FCE6C8;strokeColor=#C98B2E;strokeWidth=2;fontColor=#15365C;fontSize=15;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="620" y="510" width="270" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="p4" value="4.0&lt;br&gt;&lt;b&gt;Fusion &amp; Risk Classification&lt;/b&gt;&lt;br&gt;Late Fusion / Decision" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#DFF1DF;strokeColor=#4F8A4F;strokeWidth=2;fontColor=#15365C;fontSize=16;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1010" y="330" width="300" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="p5" value="5.0&lt;br&gt;&lt;b&gt;Guidance &amp; Evaluation&lt;/b&gt;&lt;br&gt;Risk result + metrics" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8DDE8;strokeColor=#C84B77;strokeWidth=2;fontColor=#15365C;fontSize=15;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1360" y="330" width="190" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="d1" value="D1&lt;br&gt;Text Model Artifacts&lt;br&gt;Vectorizer / vocab / model" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F7F9FC;strokeColor=#15365C;strokeWidth=2;fontColor=#15365C;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="120" width="290" height="85" as="geometry"/>
+        </mxCell>
+        <mxCell id="d2" value="D2&lt;br&gt;Speech Model Artifacts&lt;br&gt;Scaler / model" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F7F9FC;strokeColor=#15365C;strokeWidth=2;fontColor=#15365C;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="610" y="685" width="290" height="85" as="geometry"/>
+        </mxCell>
+        <mxCell id="d3" value="D3&lt;br&gt;Evaluation Results" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F7F9FC;strokeColor=#15365C;strokeWidth=2;fontColor=#15365C;fontSize=13;fontStyle=1;align=center;verticalAlign=middle;spacing=8;" vertex="1" parent="1">
+          <mxGeometry x="1070" y="685" width="230" height="75" as="geometry"/>
+        </mxCell>
+        <mxCell id="dfe1" value="input" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#15365C;strokeWidth=2;fontSize=13;fontColor=#5B6573;" edge="1" parent="1" source="ext" target="p1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="dfe2" value="text" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#15365C;strokeWidth=2;fontSize=13;fontColor=#5B6573;" edge="1" parent="1" source="p1" target="p2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="dfe3" value="audio" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#15365C;strokeWidth=2;fontSize=13;fontColor=#5B6573;" edge="1" parent="1" source="p1" target="p3">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="dfe4" value="load" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#5B6573;strokeWidth=2;dashed=1;fontSize=13;fontColor=#5B6573;" edge="1" parent="1" source="d1" target="p2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="dfe5" value="load" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#5B6573;strokeWidth=2;dashed=1;fontSize=13;fontColor=#5B6573;" edge="1" parent="1" source="d2" target="p3">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="dfe6" value="P_text" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#15365C;strokeWidth=2;fontSize=13;fontColor=#5B6573;" edge="1" parent="1" source="p2" target="p4">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="dfe7" value="P_speech" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#15365C;strokeWidth=2;fontSize=13;fontColor=#5B6573;" edge="1" parent="1" source="p3" target="p4">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="dfe8" value="risk result" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#15365C;strokeWidth=2;fontSize=13;fontColor=#5B6573;" edge="1" parent="1" source="p4" target="p5">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="dfe9" value="result + guidance" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#15365C;strokeWidth=2;fontSize=13;fontColor=#5B6573;" edge="1" parent="1" source="p5" target="ext">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="dfe10" value="metrics / predictions" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeColor=#5B6573;strokeWidth=2;dashed=1;fontSize=13;fontColor=#5B6573;" edge="1" parent="1" source="p5" target="d3">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="footer" value="KNBC RAMESH SOFTWARE SOLUTIONS AND DIGITAL MARKETING - 7075960032" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#15365C;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="850" width="1120" height="28" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

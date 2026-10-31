@@ -1,0 +1,192 @@
+{
+  "checks": [
+    {
+      "name": "required file: app.py",
+      "pass": true,
+      "detail": "C:\\Users\\RAMESH\\Desktop\\Projects\\Thanmayi 8000\\app.py"
+    },
+    {
+      "name": "required file: requirements.txt",
+      "pass": true,
+      "detail": "C:\\Users\\RAMESH\\Desktop\\Projects\\Thanmayi 8000\\requirements.txt"
+    },
+    {
+      "name": "required file: README.md",
+      "pass": true,
+      "detail": "C:\\Users\\RAMESH\\Desktop\\Projects\\Thanmayi 8000\\README.md"
+    },
+    {
+      "name": "required file: config\\fusion_config.json",
+      "pass": true,
+      "detail": "C:\\Users\\RAMESH\\Desktop\\Projects\\Thanmayi 8000\\config\\fusion_config.json"
+    },
+    {
+      "name": "required file: src\\inference_pipeline.py",
+      "pass": true,
+      "detail": "C:\\Users\\RAMESH\\Desktop\\Projects\\Thanmayi 8000\\src\\inference_pipeline.py"
+    },
+    {
+      "name": "required file: models\\text_model\\tfidf_vectorizer.joblib",
+      "pass": true,
+      "detail": "C:\\Users\\RAMESH\\Desktop\\Projects\\Thanmayi 8000\\models\\text_model\\tfidf_vectorizer.joblib"
+    },
+    {
+      "name": "required file: models\\text_model\\text_svm_calibrated.joblib",
+      "pass": true,
+      "detail": "C:\\Users\\RAMESH\\Desktop\\Projects\\Thanmayi 8000\\models\\text_model\\text_svm_calibrated.joblib"
+    },
+    {
+      "name": "required file: models\\speech_model\\best_speech_single_audio_model.joblib",
+      "pass": true,
+      "detail": "C:\\Users\\RAMESH\\Desktop\\Projects\\Thanmayi 8000\\models\\speech_model\\best_speech_single_audio_model.joblib"
+    },
+    {
+      "name": "required file: models\\speech_model\\speech_single_audio_config.json",
+      "pass": true,
+      "detail": "C:\\Users\\RAMESH\\Desktop\\Projects\\Thanmayi 8000\\models\\speech_model\\speech_single_audio_config.json"
+    },
+    {
+      "name": "required file: reports\\text_model\\text_svm_metrics.json",
+      "pass": true,
+      "detail": "C:\\Users\\RAMESH\\Desktop\\Projects\\Thanmayi 8000\\reports\\text_model\\text_svm_metrics.json"
+    },
+    {
+      "name": "required file: reports\\speech_model\\speech_single_audio_summary.json",
+      "pass": true,
+      "detail": "C:\\Users\\RAMESH\\Desktop\\Projects\\Thanmayi 8000\\reports\\speech_model\\speech_single_audio_summary.json"
+    },
+    {
+      "name": "required file: diagrams\\Thanmayi_Final_System_Design_Diagrams.drawio",
+      "pass": true,
+      "detail": "C:\\Users\\RAMESH\\Desktop\\Projects\\Thanmayi 8000\\diagrams\\Thanmayi_Final_System_Design_Diagrams.drawio"
+    },
+    {
+      "name": "required file: diagrams\\DIAGRAM_VERIFICATION_REPORT.json",
+      "pass": true,
+      "detail": "C:\\Users\\RAMESH\\Desktop\\Projects\\Thanmayi 8000\\diagrams\\DIAGRAM_VERIFICATION_REPORT.json"
+    },
+    {
+      "name": "python syntax: audit_project.py",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "python syntax: inference_pipeline.py",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "python syntax: train_speech_models.py",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "python syntax: train_speech_model_v2.py",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "python syntax: train_speech_sample_model.py",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "python syntax: train_text_bert_embeddings.py",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "python syntax: train_text_lstm.py",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "python syntax: train_text_svm_baseline.py",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "python syntax: app.py",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "text train rows",
+      "pass": true,
+      "detail": "1513"
+    },
+    {
+      "name": "text test rows",
+      "pass": true,
+      "detail": "379"
+    },
+    {
+      "name": "train labels binary",
+      "pass": true,
+      "detail": "[np.int64(0), np.int64(1)]"
+    },
+    {
+      "name": "test labels binary",
+      "pass": true,
+      "detail": "[np.int64(0), np.int64(1)]"
+    },
+    {
+      "name": "train-test normalized text overlap = 0",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "text metric accuracy exact",
+      "pass": true,
+      "detail": "0.7255936675461742"
+    },
+    {
+      "name": "speech validation participant count",
+      "pass": true,
+      "detail": "79"
+    },
+    {
+      "name": "speech validation metrics present",
+      "pass": true,
+      "detail": "{'threshold': 0.38, 'accuracy': 0.6329113924050633, 'balanced_accuracy': 0.6343582887700534, 'precision': 0.21875, 'recall': 0.6363636363636364, 'f1_score': 0.32558139534883723, 'roc_auc': 0.5922459893048129, 'confusion_matrix': [[43, 25], [4, 7]]}"
+    },
+    {
+      "name": "six diagrams present",
+      "pass": true,
+      "detail": "6"
+    },
+    {
+      "name": "diagram structural verification pass",
+      "pass": true,
+      "detail": "True"
+    },
+    {
+      "name": "text inference probability range",
+      "pass": true,
+      "detail": "0.27900351243082266"
+    },
+    {
+      "name": "validation audio found",
+      "pass": true,
+      "detail": "C:\\Users\\RAMESH\\Desktop\\Projects\\Thanmayi 8000\\Datasets\\validation\\10\\negative_out.wav"
+    },
+    {
+      "name": "speech inference probability range",
+      "pass": true,
+      "detail": "0.281613272657457"
+    },
+    {
+      "name": "fusion score range",
+      "pass": true,
+      "detail": "{'mode': 'text+speech', 'combined_evidence_score': 0.27978644049881296, 'screening_level': 'Low', 'weights': {'text': 0.7, 'speech': 0.3}, 'status': 'prototype research decision layer; not clinically validated and not jointly calibrated on paired text-speech suicide labels', 'rationale': 'Text receives higher weight because SDCNL directly models suicide-related language while EATD models SDS-derived depression/distress. No paired ground truth exists to learn fusion weights.'}"
+    },
+    {
+      "name": "fusion screening level",
+      "pass": true,
+      "detail": "Low"
+    }
+  ],
+  "passed": 37,
+  "failed": 0,
+  "overall_pass": true
+}

@@ -1,0 +1,64 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.venv/
+venv/
+env/
+.env
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Large/raw datasets and archives
+Datasets/train/
+Datasets/validation/
+Datasets/train.zip
+Datasets/validation.zip
+Datasets/EATD-Corpus-main.zip
+Datasets/**/*.wav
+Datasets/**/*.mp3
+Datasets/**/*.m4a
+
+# Derived large arrays / experimental checkpoints
+models/text_model/*.pt
+models/text_model/*embeddings*.npy
+models/text_model/*.npy
+Processed_EATD/**/*.wav
+
+# Backups / temp browser profiles
+*_BACKUP_*/
+reports/edge_test_profile/
+*.tmp
+~$*.docx
+
+# Local logs/cache
+.streamlit/
+*.log
+
+# Reference / review materials not needed to run repository
+Voice_of_Help_AI-Driven_Mental_Health_Assessment_and_Suicide_Prevention_through_Text_and_Speech.pdf
+WhatsApp Image*.jpeg
+Batch_12_zeroth_review*.pptx
+NLP_Review_1_SucideDetection.pptx
+Mental_Health_AI_BasePaper_vs_CurrentProject_Final_Detailed_Audit.xlsx
+v2Mental_Health_AI_BasePaper_vs_CurrentProject_Final_Detailed_Audit_v2.xlsx
+
+# Temporary UI/browser capture helpers
+reports/APP_RESULT_*.png
+reports/APP_TAB_*.png
+reports/FINAL_APP_SCREENSHOT_*.png
+reports/app_focus.png
+reports/app_loaded.png
+reports/context.png
+reports/focus*.png
+reports/capture_screen.ps1
+reports/capture_three_outputs.py
+reports/open_app.vbs
+reports/type_sample.vbs
+reports/edge_test_profile/

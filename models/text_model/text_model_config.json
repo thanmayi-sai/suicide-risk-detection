@@ -1,0 +1,11 @@
+{
+  "input_column": "model_text",
+  "target_column": "is_suicide",
+  "train_file": "C:\\Users\\RAMESH\\Desktop\\Projects\\Thanmayi 8000\\Datasets\\training-set-clean.csv",
+  "test_file": "C:\\Users\\RAMESH\\Desktop\\Projects\\Thanmayi 8000\\Datasets\\testing-set-clean-leakage-free.csv",
+  "vocab_fit_scope": "training subset only",
+  "validation_split_method": "15% stratified from cleaned training set",
+  "test_set_policy": "held out and used only for final evaluation",
+  "architecture": "Embedding -> Bidirectional LSTM -> Dense -> Dropout -> Sigmoid",
+  "class_balancing": "No SMOTE/oversampling; source classes are already near-balanced"
+}

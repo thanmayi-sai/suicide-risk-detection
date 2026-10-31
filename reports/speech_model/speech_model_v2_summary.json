@@ -1,0 +1,105 @@
+{
+  "best_model": "rbf_k15",
+  "training_oof_metrics": {
+    "threshold": 0.215,
+    "accuracy": 0.5875,
+    "balanced_accuracy": 0.6389128559102675,
+    "precision": 0.3333333333333333,
+    "recall": 0.7368421052631579,
+    "f1_score": 0.45901639344262296,
+    "roc_auc": 0.5642795513373597,
+    "confusion_matrix": [
+      [
+        33,
+        28
+      ],
+      [
+        5,
+        14
+      ]
+    ]
+  },
+  "official_validation_metrics_at_train_selected_threshold": {
+    "threshold": 0.215,
+    "accuracy": 0.5063291139240507,
+    "balanced_accuracy": 0.5227272727272727,
+    "precision": 0.15,
+    "recall": 0.5454545454545454,
+    "f1_score": 0.23529411764705882,
+    "roc_auc": 0.5240641711229946,
+    "confusion_matrix": [
+      [
+        34,
+        34
+      ],
+      [
+        5,
+        6
+      ]
+    ]
+  },
+  "official_validation_metrics_at_default_0.5": {
+    "threshold": 0.5,
+    "accuracy": 0.8481012658227848,
+    "balanced_accuracy": 0.49264705882352944,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1_score": 0.0,
+    "roc_auc": 0.5240641711229946,
+    "confusion_matrix": [
+      [
+        67,
+        1
+      ],
+      [
+        11,
+        0
+      ]
+    ]
+  },
+  "bootstrap_95pct_ci": {
+    "f1_score": [
+      0.08506205673758865,
+      0.3870967741935484
+    ],
+    "balanced_accuracy": [
+      0.3606827276660177,
+      0.6798214816229522
+    ],
+    "roc_auc": [
+      0.3450666566242374,
+      0.7065198738925691
+    ]
+  },
+  "config": {
+    "best_model": "rbf_k15",
+    "selected_threshold": 0.215,
+    "feature_count_input": 105,
+    "selected_feature_names": [
+      "negative_rms_std",
+      "negative_pitch_mean",
+      "negative_mfcc2_mean",
+      "negative_mfcc6_mean",
+      "neutral_rms_std",
+      "neutral_pitch_mean",
+      "neutral_mfcc2_std",
+      "neutral_mfcc7_std",
+      "neutral_mfcc10_std",
+      "positive_rms_std",
+      "positive_pitch_mean",
+      "positive_mfcc2_mean",
+      "positive_mfcc3_std",
+      "positive_mfcc5_std",
+      "positive_mfcc7_std"
+    ],
+    "selection_method": "5-fold stratified cross-validation on training split only; choose model/k/threshold by OOF F1 then balanced accuracy then ROC-AUC",
+    "validation_policy": "official EATD validation participants used only once after model/threshold selection",
+    "train_participants": 80,
+    "validation_participants": 79,
+    "train_positive": 19,
+    "train_negative": 61,
+    "validation_positive": 11,
+    "validation_negative": 68,
+    "important_limit": "EATD predicts SDS-derived depression/distress, not direct suicide risk."
+  }
+}

@@ -1,0 +1,18 @@
+EATD VALIDATION PREPROCESSING REPORT
+==========================================
+Participant folders total: 79
+Usable participants (all 3 emotion samples): 79
+Audio-level feature rows: 237
+Depressed participants (SDS standard score >=53): 11
+Non-depressed participants: 68
+
+Audio policy: prefer *_out.wav; fallback to raw *.wav only if *_out.wav is zero-duration/unusable.
+Text policy: preserve Chinese transcript wording; normalize whitespace only.
+Labels: raw label.txt preserved when available; new_label.txt used as standard SDS score.
+No labels were invented.
+
+Extracted features: 13 MFCC means + 13 MFCC stds, pitch mean/std, RMS mean/std,
+zero-crossing-rate mean/std, spectral centroid mean/std, duration.
+
+ANOMALIES:
+None

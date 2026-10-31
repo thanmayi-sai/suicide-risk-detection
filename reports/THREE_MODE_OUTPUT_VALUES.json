@@ -1,0 +1,142 @@
+{
+  "TEXT ONLY": {
+    "text": {
+      "text_probability": 0.19445478825656431,
+      "text_binary_prediction": 0,
+      "model": "TF-IDF bigram + calibrated LinearSVC"
+    },
+    "speech": null,
+    "decision": {
+      "mode": "text-only",
+      "combined_evidence_score": 0.19445478825656431,
+      "screening_level": "Low",
+      "weights": {
+        "text": 1.0,
+        "speech": 0.0
+      },
+      "status": "prototype research decision layer; not clinically validated and not jointly calibrated on paired text-speech suicide labels",
+      "rationale": "Text receives higher weight because SDCNL directly models suicide-related language while EATD models SDS-derived depression/distress. No paired ground truth exists to learn fusion weights."
+    },
+    "disclaimer": "Research screening prototype only. The text model was trained on SDCNL suicide/depression Reddit text. The speech model was trained on EATD SDS-derived depression/distress audio, not direct suicide labels. The modalities are not participant-matched, so the combined score is a documented prototype late-fusion signal, not a clinically validated suicide-risk probability or diagnosis."
+  },
+  "SPEECH ONLY": {
+    "text": null,
+    "speech": {
+      "speech_distress_probability": 0.281613272657457,
+      "speech_binary_prediction": 0,
+      "speech_threshold": 0.38,
+      "model": "single-audio acoustic Logistic Regression selected with participant-grouped CV",
+      "features": {
+        "duration_sec": 29.75,
+        "rms_mean": 0.09282595664262772,
+        "rms_std": 0.09025802463293076,
+        "zcr_mean": 0.0994161626344086,
+        "zcr_std": 0.07796075497825848,
+        "spectral_centroid_mean": 1163.6956813120778,
+        "spectral_centroid_std": 898.2224413401271,
+        "pitch_mean": 156.49080448367914,
+        "pitch_std": 98.72057848301992,
+        "mfcc1_mean": -322.5429382324219,
+        "mfcc1_std": 118.96955108642578,
+        "mfcc2_mean": 117.78533935546875,
+        "mfcc2_std": 80.78128814697266,
+        "mfcc3_mean": 10.80475902557373,
+        "mfcc3_std": 40.80933380126953,
+        "mfcc4_mean": 1.58039128780365,
+        "mfcc4_std": 33.11760711669922,
+        "mfcc5_mean": -9.076924324035645,
+        "mfcc5_std": 25.581945419311523,
+        "mfcc6_mean": -3.175967216491699,
+        "mfcc6_std": 19.687095642089844,
+        "mfcc7_mean": -2.3112895488739014,
+        "mfcc7_std": 17.922924041748047,
+        "mfcc8_mean": -9.392159461975098,
+        "mfcc8_std": 14.80771255493164,
+        "mfcc9_mean": -16.119842529296875,
+        "mfcc9_std": 15.579975128173828,
+        "mfcc10_mean": -14.108868598937988,
+        "mfcc10_std": 14.520155906677246,
+        "mfcc11_mean": -2.5960774421691895,
+        "mfcc11_std": 12.412219047546387,
+        "mfcc12_mean": -9.012060165405273,
+        "mfcc12_std": 12.126233100891113,
+        "mfcc13_mean": -14.901679992675781,
+        "mfcc13_std": 11.867205619812012
+      }
+    },
+    "decision": {
+      "mode": "speech-only",
+      "combined_evidence_score": 0.281613272657457,
+      "screening_level": "Low",
+      "weights": {
+        "text": 0.0,
+        "speech": 1.0
+      },
+      "status": "prototype research decision layer; not clinically validated and not jointly calibrated on paired text-speech suicide labels",
+      "rationale": "Text receives higher weight because SDCNL directly models suicide-related language while EATD models SDS-derived depression/distress. No paired ground truth exists to learn fusion weights."
+    },
+    "disclaimer": "Research screening prototype only. The text model was trained on SDCNL suicide/depression Reddit text. The speech model was trained on EATD SDS-derived depression/distress audio, not direct suicide labels. The modalities are not participant-matched, so the combined score is a documented prototype late-fusion signal, not a clinically validated suicide-risk probability or diagnosis."
+  },
+  "TEXT + SPEECH": {
+    "text": {
+      "text_probability": 0.19445478825656431,
+      "text_binary_prediction": 0,
+      "model": "TF-IDF bigram + calibrated LinearSVC"
+    },
+    "speech": {
+      "speech_distress_probability": 0.281613272657457,
+      "speech_binary_prediction": 0,
+      "speech_threshold": 0.38,
+      "model": "single-audio acoustic Logistic Regression selected with participant-grouped CV",
+      "features": {
+        "duration_sec": 29.75,
+        "rms_mean": 0.09282595664262772,
+        "rms_std": 0.09025802463293076,
+        "zcr_mean": 0.0994161626344086,
+        "zcr_std": 0.07796075497825848,
+        "spectral_centroid_mean": 1163.6956813120778,
+        "spectral_centroid_std": 898.2224413401271,
+        "pitch_mean": 156.49080448367914,
+        "pitch_std": 98.72057848301992,
+        "mfcc1_mean": -322.5429382324219,
+        "mfcc1_std": 118.96955108642578,
+        "mfcc2_mean": 117.78533935546875,
+        "mfcc2_std": 80.78128814697266,
+        "mfcc3_mean": 10.80475902557373,
+        "mfcc3_std": 40.80933380126953,
+        "mfcc4_mean": 1.58039128780365,
+        "mfcc4_std": 33.11760711669922,
+        "mfcc5_mean": -9.076924324035645,
+        "mfcc5_std": 25.581945419311523,
+        "mfcc6_mean": -3.175967216491699,
+        "mfcc6_std": 19.687095642089844,
+        "mfcc7_mean": -2.3112895488739014,
+        "mfcc7_std": 17.922924041748047,
+        "mfcc8_mean": -9.392159461975098,
+        "mfcc8_std": 14.80771255493164,
+        "mfcc9_mean": -16.119842529296875,
+        "mfcc9_std": 15.579975128173828,
+        "mfcc10_mean": -14.108868598937988,
+        "mfcc10_std": 14.520155906677246,
+        "mfcc11_mean": -2.5960774421691895,
+        "mfcc11_std": 12.412219047546387,
+        "mfcc12_mean": -9.012060165405273,
+        "mfcc12_std": 12.126233100891113,
+        "mfcc13_mean": -14.901679992675781,
+        "mfcc13_std": 11.867205619812012
+      }
+    },
+    "decision": {
+      "mode": "text+speech",
+      "combined_evidence_score": 0.2206023335768321,
+      "screening_level": "Low",
+      "weights": {
+        "text": 0.7,
+        "speech": 0.3
+      },
+      "status": "prototype research decision layer; not clinically validated and not jointly calibrated on paired text-speech suicide labels",
+      "rationale": "Text receives higher weight because SDCNL directly models suicide-related language while EATD models SDS-derived depression/distress. No paired ground truth exists to learn fusion weights."
+    },
+    "disclaimer": "Research screening prototype only. The text model was trained on SDCNL suicide/depression Reddit text. The speech model was trained on EATD SDS-derived depression/distress audio, not direct suicide labels. The modalities are not participant-matched, so the combined score is a documented prototype late-fusion signal, not a clinically validated suicide-risk probability or diagnosis."
+  }
+}
