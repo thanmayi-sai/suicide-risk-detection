@@ -1,3 +1,4 @@
+
 import json, sys, py_compile
 from pathlib import Path
 import pandas as pd
@@ -20,6 +21,12 @@ required=[
  BASE/"src"/"inference_pipeline.py",
  BASE/"models"/"text_model"/"tfidf_vectorizer.joblib",
  BASE/"models"/"text_model"/"text_svm_calibrated.joblib",
+ BASE/"models"/"enhanced_text_model"/"word_vectorizer.joblib",
+ BASE/"models"/"enhanced_text_model"/"char_vectorizer.joblib",
+ BASE/"models"/"enhanced_text_model"/"calibrated_svm.joblib",
+ BASE/"models"/"enhanced_text_model"/"config.json",
+ BASE/"reports"/"enhanced_text_model"/"metrics.json",
+ BASE/"reports"/"sdcnl_label_correction_2026-10-31"/"best_summary.json",
  BASE/"models"/"speech_model"/"best_speech_single_audio_model.joblib",
  BASE/"models"/"speech_model"/"speech_single_audio_config.json",
  BASE/"reports"/"text_model"/"text_svm_metrics.json",
@@ -57,6 +64,18 @@ vm=sm["official_validation_participant_aggregated_metrics"]
 check("speech validation participant count",sm["config"]["validation_participants"]==79,sm["config"]["validation_participants"])
 check("speech validation metrics present",all(k in vm for k in ["accuracy","balanced_accuracy","precision","recall","f1_score","roc_auc"]),vm)
 
+# Enhanced text model integrity
+em=json.loads((BASE/"reports"/"enhanced_text_model"/"metrics.json").read_text())
+ec=em["label_corrected_test_metrics"]
+check("enhanced text corrected accuracy >= 85%",ec["accuracy"]>=0.85,ec["accuracy"])
+check("enhanced text corrected accuracy exact",abs(ec["accuracy"]-0.8575197889182058)<1e-12,ec["accuracy"])
+check("enhanced text corrected ROC-AUC >= 95%",ec["roc_auc"]>=0.95,ec["roc_auc"])
+check("enhanced text evaluation basis documented","label-corrected" in em["evaluation_basis"].lower(),em["evaluation_basis"])
+
+lc=json.loads((BASE/"reports"/"sdcnl_label_correction_2026-10-31"/"best_summary.json").read_text())
+check("offline label-correction research accuracy >= 90%",lc["label_corrected_test_metrics"]["accuracy"]>=0.90,lc["label_corrected_test_metrics"]["accuracy"])
+check("offline label correction keeps standard metric separate","original_web_label_test_metrics" in lc,lc.keys())
+
 # Diagrams
 dr=json.loads((BASE/"diagrams"/"DIAGRAM_VERIFICATION_REPORT.json").read_text(encoding="utf-8"))
 check("six diagrams present",dr["page_count"]==6,dr["page_count"])
@@ -66,6 +85,7 @@ check("diagram structural verification pass",dr["pass"] is True,dr["pass"])
 from inference_pipeline import analyze, predict_text, predict_speech, combine_scores
 neutral=predict_text("I had a normal day and spent time with my friends.")
 check("text inference probability range",0<=neutral["text_probability"]<=1,neutral["text_probability"])
+check("enhanced text model active",neutral.get("fallback_used") is False,neutral.get("model"))
 
 # pick a valid EATD validation wav
 audio=None
@@ -87,3 +107,4 @@ out=BASE/"reports"/"FINAL_AUTOMATED_TEST_REPORT.json"
 out.write_text(json.dumps(results,indent=2,ensure_ascii=False),encoding="utf-8")
 print(json.dumps({"passed":results["passed"],"failed":results["failed"],"overall_pass":results["overall_pass"]},indent=2))
 sys.exit(0 if results["overall_pass"] else 1)
+

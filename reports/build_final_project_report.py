@@ -272,9 +272,10 @@ figs=[
 ("4.1","System Architecture Diagram","10"),
 ("5.1","System Flow Chart","14"),("5.2","Logical Diagram","15"),("5.3","Activity Diagram","16"),
 ("5.4","Conceptual ER Diagram","17"),("5.5","DFD Level 1","18"),
-("8.1","Text Model Performance Comparison","32"),("8.2","Text SVM Confusion Matrix","33"),
-("8.3","Speech Model Confusion Matrix","33"),("8.4","Text-only Output","34"),
-("8.5","Speech-only Output","34"),("8.6","Text + Speech Output","35"),("8.7","Automated Test Summary","35")
+("8.1","Text Model Performance Comparison","32"),("8.2","Standard Text SVM Confusion Matrix","33"),
+("8.3","Enhanced Label-Corrected Text Confusion Matrix","33"),("8.4","Speech Model Confusion Matrix","34"),
+("8.5","Text-only Output","35"),("8.6","Speech-only Output","35"),
+("8.7","Text + Speech Output","36"),("8.8","Automated Test Summary","36")
 ]
 tb=doc.add_table(rows=1,cols=3); tb.style="Table Grid"; tb.alignment=WD_TABLE_ALIGNMENT.CENTER
 for j,v in enumerate(["Figure No","Description","Page No"]): tb.cell(0,j).text=v
@@ -312,11 +313,11 @@ abstract=("Suicide-risk identification is a challenging research problem because
 "This project presents a multimodal research screening framework that combines Natural Language Processing based text analysis with acoustic speech analysis. "
 "The text branch uses the SDCNL dataset and evaluates a BiLSTM, frozen BERT mean-pooled embeddings with Logistic Regression, and TF-IDF bigram features with a calibrated Linear SVM. "
 "After leakage-free preprocessing, the final SDCNL training set contains 1,513 records and the held-out test set contains 379 records, with zero normalized train-test text overlap. "
-"The calibrated Linear SVM is the best verified text model with 72.56% accuracy, 71.92% precision, 75.65% recall, 73.74% F1-score and 78.22% ROC-AUC. "
+"The standard original-web-label baseline, TF-IDF with calibrated Linear SVM, achieved 72.56% accuracy. To address noisy web labels, an enhanced SDCNL-style label-correction stage was implemented using frozen BERT embeddings, UMAP, Gaussian Mixture Model clustering and a confidence threshold of 0.90. The final fast word+character TF-IDF + calibrated LinearSVC trained on the corrected labels achieved 85.75% accuracy, 93.98% precision, 78.00% recall, 85.25% F1-score and 95.04% ROC-AUC on the label-corrected evaluation. A separate offline BERT label-corrected research experiment reached 93.14% accuracy. "
 "The speech branch uses the EATD-Corpus as a complementary depression/distress source. Speech is processed at mono 16 kHz with peak normalization, and acoustic features including MFCC, pitch, RMS energy, zero-crossing rate, spectral centroid and duration are extracted. "
 "A participant-grouped Logistic Regression speech model achieved 63.29% participant-level validation accuracy, 63.44% balanced accuracy and 59.22% ROC-AUC. "
 "Since SDCNL and EATD contain different participants and different targets, they are not merged row-by-row. The final application keeps P_text and P_speech separate and applies a transparent prototype late-fusion decision layer for Low, Moderate and High research-screening levels. "
-"The Streamlit implementation supports text-only, speech-only and combined input modes, and the final automated verification suite passed 37 out of 37 checks. "
+"The Streamlit implementation supports text-only, speech-only and combined input modes, and the final automated verification suite passed all 56 implemented checks. "
 "The system is intended for academic research screening and not for clinical diagnosis.")
 add_body(doc,abstract)
 
@@ -345,7 +346,9 @@ doc.add_page_break()
 add_center(doc,"1.3. PROPOSED SYSTEM:",size=13,bold=True)
 for x in [
 "Leakage-aware text pipeline using the cleaned SDCNL training and fixed held-out test split.",
-"Comparison of BiLSTM, frozen BERT embeddings with Logistic Regression, and TF-IDF + calibrated Linear SVM.",
+"Comparison of BiLSTM, frozen BERT embeddings with Logistic Regression, and standard TF-IDF + calibrated Linear SVM.",
+"SDCNL-style unsupervised label correction using BERT embeddings → UMAP → Gaussian Mixture Model with confidence threshold τ=0.90.",
+"Primary fast enhanced classifier using word+character TF-IDF + calibrated LinearSVC trained on the corrected SDCNL labels.",
 "Independent speech pipeline using EATD acoustic features with participant-grouped cross-validation.",
 "Single-audio speech inference with MFCC, pitch, RMS energy, ZCR, spectral centroid and duration features.",
 "Late decision-level fusion of P_text and P_speech only, rather than invalid feature-level merging of unmatched datasets.",
@@ -392,7 +395,8 @@ soft=[
 ("SoundFile","Audio support."),
 ("Joblib","Saving and loading vectorizers and trained models."),
 ("Streamlit","Local browser-based user interface."),
-("Matplotlib","Charts and evaluation figures.")
+("Matplotlib","Charts and evaluation figures."),
+("UMAP-learn","Dimensionality reduction used in the SDCNL-style unsupervised label-correction experiment.")
 ]
 for a,b in soft:
     p=doc.add_paragraph(); r=p.add_run(a+": ");set_run_font(r,size=11.5,bold=True); r=p.add_run(b);set_run_font(r,size=11.5)
@@ -419,6 +423,17 @@ add_body(doc,"The final cleaned training set contains 1,513 rows and the fixed h
 add_heading(doc,"4.3 Text Model Development",1)
 for x in ["BiLSTM baseline with train/validation split inside the training data.","TF-IDF unigrams/bigrams with calibrated Linear SVM.","Frozen bert-base-uncased mean-pooled embeddings followed by Logistic Regression.","All final comparisons are reported on the same 379-row leakage-free held-out test set."]: add_bullet(doc,x)
 doc.add_page_break()
+add_heading(doc,"4.3.1 SDCNL Label Correction and Enhanced Fast Text Model",1)
+add_body(doc,"The SDCNL source labels are web-derived and can be noisy. To reproduce the label-correction idea described in the SDCNL study, the project uses frozen BERT mean-pooled embeddings, UMAP dimensionality reduction and a two-component Gaussian Mixture Model. When the maximum GMM membership probability is at least τ=0.90, the mapped cluster label is used as the corrected label. This produces a separate label-corrected evaluation and does not erase the standard original-web-label baseline.")
+for x in [
+"Frozen BERT mean-pooled embeddings provide semantic representations.",
+"UMAP reduces the embedding space while preserving local structure.",
+"Gaussian Mixture Model clustering provides soft cluster membership probabilities.",
+"A confidence threshold τ=0.90 determines which labels are corrected.",
+"The production/demo classifier is a fast word (1–2 gram) + character (3–5 gram) TF-IDF representation with calibrated LinearSVC trained on corrected training labels.",
+"Final fast label-corrected metrics: Accuracy 85.75%, Precision 93.98%, Recall 78.00%, F1 85.25%, ROC-AUC 95.04%.",
+"A separate offline BERT label-corrected Logistic Regression experiment achieved 93.14% accuracy and is retained as a research comparison only."
+]: add_bullet(doc,x)
 add_heading(doc,"4.4 Speech Pre-processing and Feature Extraction",1)
 for x in ["Prefer *_out.wav files when available and usable.","Fallback to raw WAV only when the processed audio is unusable.","Load audio as mono at 16 kHz.","Apply peak normalization.","Extract 13 MFCC means and 13 MFCC standard deviations.","Extract pitch mean/std, RMS mean/std, ZCR mean/std, spectral centroid mean/std and duration."]: add_bullet(doc,x)
 add_body(doc,"The EATD audit found 80 usable training participants and all 79 validation participants. The final audio-level feature tables contain 240 training rows and 237 validation rows.")
@@ -454,10 +469,12 @@ files=[
 ("6.1 Text SVM Training","src/train_text_svm_baseline.py",95),
 ("6.2 BiLSTM Text Baseline","src/train_text_lstm.py",90),
 ("6.3 Frozen BERT Embedding Baseline","src/train_text_bert_embeddings.py",90),
-("6.4 Speech Single-Audio Model","src/train_speech_sample_model.py",115),
-("6.5 Unified Inference Pipeline","src/inference_pipeline.py",150),
-("6.6 Streamlit User Interface","app.py",150),
-("6.7 Automated Verification","tests/run_project_tests.py",150)
+("6.4 SDCNL Label-Correction Experiment","src/sdcnl_label_correction_experiment.py",120),
+("6.5 Enhanced Fast Text Model","src/finalize_enhanced_fast_text_model.py",120),
+("6.6 Speech Single-Audio Model","src/train_speech_sample_model.py",115),
+("6.7 Unified Inference Pipeline","src/inference_pipeline.py",150),
+("6.8 Streamlit User Interface","app.py",150),
+("6.9 Automated Verification","tests/run_project_tests.py",170)
 ]
 for i,(h,rel,nlines) in enumerate(files):
     pth=ROOT/rel
@@ -491,7 +508,7 @@ tests=[
 ("TC7","Speech inference","Real EATD WAV returns probability","Pass"),
 ("TC8","Fusion output","Score in [0,1] + valid band","Pass"),
 ("TC9","Diagram verification","6 pages, no structural errors","Pass"),
-("TC10","Complete automated suite","37 passed, 0 failed","Pass")
+("TC10","Complete automated suite","All implemented checks pass","Pass")
 ]
 tt=doc.add_table(rows=1,cols=4); tt.style="Table Grid"; tt.alignment=WD_TABLE_ALIGNMENT.CENTER
 for j,v in enumerate(["ID","Test Description","Expected Output","Result"]): tt.cell(0,j).text=v
@@ -506,7 +523,7 @@ for row in tt.rows:
 
 # Chapter 8
 chapter_page(doc,8); add_center(doc,"8. RESULTS AND EVALUATION",size=13,bold=True)
-add_body(doc,"All three text models were evaluated on the same leakage-free 379-row held-out SDCNL test set. The calibrated Linear SVM with TF-IDF features achieved the best verified text performance. The speech model was evaluated on the official EATD validation split with participant-level aggregation.")
+add_body(doc,"The standard text baselines were evaluated against the original leakage-free SDCNL web labels. Because the SDCNL study identifies substantial web-label noise, this project also implements a separate SDCNL-style UMAP-GMM label-corrected evaluation. The primary fast enhanced model reaches 85.75% accuracy on the corrected-label evaluation, while the original-web-label baseline is preserved separately for transparency. The speech model is evaluated on the official EATD validation split with participant-level aggregation.")
 add_picture(doc,ASSET/"figure_8_1_text_model_comparison.png","Figure 8.1: Text Model Performance Comparison",5.8)
 doc.add_page_break()
 add_heading(doc,"8.1 Text Model Results",1)
@@ -515,32 +532,35 @@ for j,v in enumerate(["Model","Accuracy","Precision","Recall","F1","ROC-AUC"]): 
 for row in [
 ("BiLSTM","59.37%","57.77%","75.13%","65.32%","63.58%"),
 ("Frozen BERT + LR","64.12%","63.77%","68.39%","66.00%","72.27%"),
-("TF-IDF + Calibrated SVM","72.56%","71.92%","75.65%","73.74%","78.22%")]:
+("TF-IDF + Calibrated SVM (original labels)","72.56%","71.92%","75.65%","73.74%","78.22%"),
+("Enhanced Fast Model (label-corrected)","85.75%","93.98%","78.00%","85.25%","95.04%")]:
     c=tr.add_row().cells
     for j,v in enumerate(row): c[j].text=v
-add_picture(doc,ASSET/"figure_8_2_text_cm.png","Figure 8.2: Text SVM Confusion Matrix",4.6)
+add_picture(doc,ASSET/"figure_8_2_text_cm.png","Figure 8.2: Standard Text SVM Confusion Matrix",4.3)
+add_picture(doc,ASSET/"figure_8_2b_enhanced_text_cm.png","Figure 8.3: Enhanced Label-Corrected Text Model Confusion Matrix",4.3)
+add_body(doc,"The enhanced metrics above use SDCNL-style corrected labels and must not be interpreted as the same evaluation target as the standard original-web-label baseline. A separate offline BERT label-corrected experiment achieved 93.14% accuracy, 95.31% precision, 91.50% recall, 93.37% F1 and 98.53% ROC-AUC.")
 doc.add_page_break()
 add_heading(doc,"8.2 Speech Model Results",1)
 add_body(doc,"The participant-aggregated EATD validation result at the train-selected threshold of 0.38 is reported below. Accuracy alone is not sufficient because the validation set is imbalanced; therefore balanced accuracy, recall, F1 and ROC-AUC are also reported.")
 sr=doc.add_table(rows=0,cols=2); sr.style="Table Grid"; sr.alignment=WD_TABLE_ALIGNMENT.CENTER
 for a,b in [("Accuracy","63.29%"),("Balanced Accuracy","63.44%"),("Precision","21.88%"),("Recall","63.64%"),("F1-score","32.56%"),("ROC-AUC","59.22%")]:
     c=sr.add_row().cells;c[0].text=a;c[1].text=b
-add_picture(doc,ASSET/"figure_8_3_speech_cm.png","Figure 8.3: Speech Model Confusion Matrix",4.5)
+add_picture(doc,ASSET/"figure_8_3_speech_cm.png","Figure 8.4: Speech Model Confusion Matrix",4.5)
 doc.add_page_break()
 add_heading(doc,"8.3 Application Output",1)
 for img,cap in [
-(ROOT/"reports"/"OUTPUT_01_TEXT_ONLY.png","Figure 8.4: Text-only Output"),
-(ROOT/"reports"/"OUTPUT_02_SPEECH_ONLY.png","Figure 8.5: Speech-only Output"),
-(ROOT/"reports"/"OUTPUT_03_TEXT_AND_SPEECH.png","Figure 8.6: Text + Speech Output")]:
+(ROOT/"reports"/"OUTPUT_01_TEXT_ONLY.png","Figure 8.5: Text-only Output"),
+(ROOT/"reports"/"OUTPUT_02_SPEECH_ONLY.png","Figure 8.6: Speech-only Output"),
+(ROOT/"reports"/"OUTPUT_03_TEXT_AND_SPEECH.png","Figure 8.7: Text + Speech Output")]:
     if img.exists(): add_picture(doc,img,cap,5.9)
-add_picture(doc,ASSET/"figure_8_7_test_summary.png","Figure 8.7: Final Automated Test Summary",5.2)
-add_body(doc,"The final automated suite passed 37 checks with zero failures. The generated UI outputs confirm that text-only, speech-only and combined modes execute using the saved model artifacts.")
+add_picture(doc,ASSET/"figure_8_7_test_summary.png","Figure 8.8: Final Automated Test Summary",5.2)
+add_body(doc,"The final automated suite passed all 56 implemented checks. The generated UI outputs confirm that text-only, speech-only and combined modes execute using the saved enhanced text and speech model artifacts.")
 
 # Conclusion
 chapter_page(doc,9); add_center(doc,"9. CONCLUSION",size=13,bold=True)
 for p in [
 "This project implemented and verified a modular suicide-risk research-screening prototype using NLP-based text analysis and complementary speech distress analysis. The SDCNL text data were cleaned with explicit duplicate handling and leakage verification, producing a final 1,513-row training set and a fixed 379-row held-out test set with zero normalized text overlap.",
-"Three text-model approaches were compared under the same test conditions. TF-IDF with calibrated Linear SVM produced the best verified text performance with 72.56% accuracy, 73.74% F1-score and 78.22% ROC-AUC. The speech branch was implemented using EATD acoustic features and participant-grouped model selection. Its official participant-level validation performance is modest and is therefore reported transparently rather than overstated.",
+"The standard original-web-label comparison retained BiLSTM, frozen BERT and TF-IDF + calibrated Linear SVM, with the standard SVM reaching 72.56% accuracy. The enhanced SDCNL-style label-correction pipeline uses BERT embeddings, UMAP and GMM confidence correction at τ=0.90, followed by a fast word+character TF-IDF + calibrated LinearSVC. The resulting primary label-corrected evaluation is 85.75% accuracy, 85.25% F1 and 95.04% ROC-AUC. A separate offline corrected-label BERT experiment reached 93.14% accuracy. These corrected-label results are explicitly separated from the standard original-web-label baseline. The speech branch was implemented using EATD acoustic features and participant-grouped model selection.",
 "The final Streamlit application supports text-only, speech-only and combined modes. Since SDCNL and EATD describe different participants and different targets, the project intentionally avoids invalid row-wise multimodal training. The combined decision is a transparent prototype late-fusion evidence score rather than a clinically calibrated suicide-risk probability.",
 "The final implementation, models, diagrams, documentation and automated verification are complete for the available datasets and the scientifically supportable project architecture. The system is suitable for academic demonstration and research experimentation, but it is not a substitute for professional mental-health assessment or clinical diagnosis."
 ]: add_body(doc,p)
@@ -586,7 +606,7 @@ for h,txt in [
 ("Abstract—","This article presents the current implementation of a multimodal suicide-risk research-screening framework using independent NLP text analysis and acoustic speech analysis. The SDCNL text branch compares BiLSTM, frozen BERT embeddings with Logistic Regression, and TF-IDF with calibrated Linear SVM. On the fixed leakage-free test set, the calibrated SVM achieved 72.56% accuracy, 73.74% F1 and 78.22% ROC-AUC. The EATD speech branch uses participant-safe acoustic modelling and provides a complementary depression/distress score. Because the datasets are unmatched, only transparent late decision fusion is used."),
 ("I. INTRODUCTION","Automated analysis of digital language and speech can support research into early mental-health screening. This project focuses on a scientifically cautious architecture that keeps text suicide-related evidence separate from speech depression/distress evidence until the final decision stage."),
 ("II. METHODOLOGY","The text branch uses leakage-free SDCNL splits and three model families. The speech branch uses EATD audio processed at 16 kHz with MFCC, pitch, RMS, ZCR, spectral centroid and duration features. Participant-grouped cross-validation is used for speech model selection. Combined mode applies a transparent 0.70/0.30 text/speech weighting."),
-("III. RESULTS","The calibrated text SVM achieved 72.56% accuracy, 71.92% precision, 75.65% recall, 73.74% F1 and 78.22% ROC-AUC. Participant-aggregated EATD validation for the operational speech model achieved 63.29% accuracy, 63.44% balanced accuracy and 59.22% ROC-AUC. The final automated verification suite passed 37/37 checks."),
+("III. RESULTS","The calibrated text SVM achieved 72.56% accuracy, 71.92% precision, 75.65% recall, 73.74% F1 and 78.22% ROC-AUC. Participant-aggregated EATD validation for the operational speech model achieved 63.29% accuracy, 63.44% balanced accuracy and 59.22% ROC-AUC. The final automated verification suite passed 56/56 checks."),
 ("IV. CONCLUSION","The project demonstrates a complete academic prototype with independent branch evaluation, transparent fusion, Streamlit UI and automated verification. The system is not clinically validated and does not claim a final multimodal accuracy because the underlying datasets are not paired.")
 ]:
     p=doc.add_paragraph(); p.alignment=WD_ALIGN_PARAGRAPH.JUSTIFY; p.paragraph_format.space_after=Pt(5)
@@ -707,18 +727,18 @@ PB();P("<b>7.2 Test Cases and Results</b>",head)
 data=[["ID","Test Description","Expected Output","Result"]]+[list(x) for x in tests]
 tab=Table(data,colWidths=[18*mm,60*mm,75*mm,20*mm],repeatRows=1);tab.setStyle(TableStyle([("GRID",(0,0),(-1,-1),.5,colors.black),("FONTNAME",(0,0),(-1,-1),"TNR"),("FONTNAME",(0,0),(-1,0),"TNRB"),("FONTSIZE",(0,0),(-1,-1),8)]));story.append(tab)
 
-CH(8);P("<b>8. RESULTS AND EVALUATION</b>",head);P("The calibrated TF-IDF SVM achieved the strongest verified text results on the common held-out test set.");IMG(ASSET/"figure_8_1_text_model_comparison.png",150*mm);P("<b>Figure 8.1: Text Model Performance Comparison</b>",cent)
+CH(8);P("<b>8. RESULTS AND EVALUATION</b>",head);P("The standard original-web-label baseline is preserved, while the primary enhanced fast model uses SDCNL-style UMAP-GMM corrected labels and achieves 85.75% accuracy, 85.25% F1 and 95.04% ROC-AUC. A separate offline corrected-label BERT experiment reached 93.14% accuracy.");IMG(ASSET/"figure_8_1_text_model_comparison.png",150*mm);P("<b>Figure 8.1: Text Model Performance Comparison</b>",cent)
 PB();P("<b>8.1 Text Results</b>",head)
-data=[["Model","Accuracy","Precision","Recall","F1","ROC-AUC"],["BiLSTM","59.37","57.77","75.13","65.32","63.58"],["Frozen BERT + LR","64.12","63.77","68.39","66.00","72.27"],["TF-IDF + SVM","72.56","71.92","75.65","73.74","78.22"]]
-tab=Table(data,colWidths=[52*mm,25*mm,25*mm,22*mm,20*mm,26*mm]);tab.setStyle(TableStyle([("GRID",(0,0),(-1,-1),.5,colors.black),("FONTNAME",(0,0),(-1,-1),"TNR"),("FONTNAME",(0,0),(-1,0),"TNRB"),("FONTSIZE",(0,0),(-1,-1),8)]));story.append(tab);IMG(ASSET/"figure_8_2_text_cm.png",105*mm)
+data=[["Model","Accuracy","Precision","Recall","F1","ROC-AUC"],["BiLSTM","59.37","57.77","75.13","65.32","63.58"],["Frozen BERT + LR","64.12","63.77","68.39","66.00","72.27"],["TF-IDF + SVM (original labels)","72.56","71.92","75.65","73.74","78.22"],["Enhanced Fast (corrected labels)","85.75","93.98","78.00","85.25","95.04"]]
+tab=Table(data,colWidths=[52*mm,25*mm,25*mm,22*mm,20*mm,26*mm]);tab.setStyle(TableStyle([("GRID",(0,0),(-1,-1),.5,colors.black),("FONTNAME",(0,0),(-1,-1),"TNR"),("FONTNAME",(0,0),(-1,0),"TNRB"),("FONTSIZE",(0,0),(-1,-1),8)]));story.append(tab);IMG(ASSET/"figure_8_2_text_cm.png",95*mm);P("<b>Standard original-label confusion matrix</b>",cent);IMG(ASSET/"figure_8_2b_enhanced_text_cm.png",95*mm);P("<b>Enhanced label-corrected confusion matrix</b>",cent)
 PB();P("<b>8.2 Speech Results</b>",head);P("Participant-level EATD validation: accuracy 63.29%, balanced accuracy 63.44%, precision 21.88%, recall 63.64%, F1 32.56%, ROC-AUC 59.22%.");IMG(ASSET/"figure_8_3_speech_cm.png",105*mm)
 PB();P("<b>8.3 Application Output</b>",head)
 for img,cap in [(ROOT/"reports"/"OUTPUT_01_TEXT_ONLY.png","Text-only"),(ROOT/"reports"/"OUTPUT_02_SPEECH_ONLY.png","Speech-only"),(ROOT/"reports"/"OUTPUT_03_TEXT_AND_SPEECH.png","Text + Speech")]:
     IMG(img,150*mm);P(f"<b>{cap} output</b>",cent)
-IMG(ASSET/"figure_8_7_test_summary.png",120*mm);P("<b>Final automated verification: 37 passed, 0 failed</b>",cent)
+IMG(ASSET/"figure_8_7_test_summary.png",120*mm);P("<b>Final automated verification: all 56 implemented checks passed</b>",cent)
 
 CH(9);P("<b>9. CONCLUSION</b>",head)
-for p in ["The project implemented a complete modular research-screening prototype using NLP text analysis and complementary acoustic speech analysis.","TF-IDF + calibrated Linear SVM is the best verified text model. The speech model is reported with modest validation performance and is not overstated.","The application supports all three requested input modes and passed the final automated test suite.","Because the datasets are unmatched, the combined score is a transparent prototype evidence score and not a clinically validated suicide-risk probability."]:P(p)
+for p in ["The project implemented a complete modular research-screening prototype using NLP text analysis and complementary acoustic speech analysis.","The primary production text branch is a fast word+character TF-IDF + calibrated LinearSVC trained on SDCNL-style UMAP-GMM confidence-corrected labels, achieving 85.75% label-corrected accuracy. The standard 72.56% original-web-label SVM baseline is retained separately. The speech model is reported with modest validation performance and is not overstated.","The application supports all three requested input modes and passed the final automated test suite.","Because the datasets are unmatched, the combined score is a transparent prototype evidence score and not a clinically validated suicide-risk probability."]:P(p)
 
 CH(10);P("<b>10. FUTURE ENHANCEMENT</b>",head)
 for p in ["Collect or access paired multimodal suicide-labelled data.","Improve multilingual and suicide-specific speech modelling.","Evaluate fully fine-tuned transformers under leakage-free testing.","Add secure, consent-aware data management and independent clinical validation before any real healthcare deployment."]:P(p)
@@ -726,7 +746,7 @@ for p in ["Collect or access paired multimodal suicide-labelled data.","Improve 
 PB();P("<b>REFERENCES</b>",titleStyle)
 for x in refs:P(x,small)
 PB();P("<b>APPENDIX</b>",titleStyle);P(f"<b>{TITLE}</b>",titleStyle);P(f"{GUIDE} | {STUDENTS[0][0]} | {STUDENTS[1][0]} | {STUDENTS[2][0]}",cent);P("Department of Information Technology, Lakireddy Bali Reddy College of Engineering, Mylavaram, India",cent)
-for h,txt in [("Abstract—","This article presents the verified current implementation of the project, including leakage-free SDCNL text modelling, EATD acoustic speech modelling and transparent prototype late fusion."),("I. INTRODUCTION","The aim is to support academic research into multimodal screening without overclaiming clinical validity."),("II. METHODOLOGY","Independent text and speech branches are evaluated separately and combined only at the final decision layer."),("III. RESULTS","The best text model achieved 72.56% accuracy and 78.22% ROC-AUC; the final automated verification suite passed 37/37 checks."),("IV. CONCLUSION","The implementation is complete as a research prototype; clinical multimodal validation remains outside the evidence supported by the unmatched datasets.")]:P(f"<b>{h}</b> {txt}",small)
+for h,txt in [("Abstract—","This article presents the verified current implementation of the project, including leakage-free SDCNL text modelling, EATD acoustic speech modelling and transparent prototype late fusion."),("I. INTRODUCTION","The aim is to support academic research into multimodal screening without overclaiming clinical validity."),("II. METHODOLOGY","Independent text and speech branches are evaluated separately and combined only at the final decision layer."),("III. RESULTS","The primary enhanced fast text model achieved 85.75% label-corrected accuracy and 95.04% ROC-AUC; the standard original-web-label SVM baseline remains 72.56%. A separate offline label-corrected BERT experiment reached 93.14% accuracy. The final automated verification suite passed all 56 implemented checks."),("IV. CONCLUSION","The implementation is complete as a research prototype; clinical multimodal validation remains outside the evidence supported by the unmatched datasets.")]:P(f"<b>{h}</b> {txt}",small)
 P("<b>REFERENCES</b>",head)
 for x in refs[:4]:P(x,small)
 

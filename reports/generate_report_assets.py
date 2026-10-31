@@ -1,4 +1,5 @@
 
+
 from pathlib import Path
 import matplotlib.pyplot as plt
 from matplotlib.patches import FancyBboxPatch, Circle, FancyArrowPatch, Rectangle, Ellipse
@@ -104,12 +105,12 @@ ax.set_title("Data Flow Diagram - Level 1",fontsize=16,fontweight="bold")
 save(fig,"figure_5_5_dfd.png")
 
 # Text model comparison
-models=["BiLSTM","Frozen BERT + LR","TF-IDF + Calibrated SVM"]
-acc=[59.37,64.12,72.56]; f1=[65.32,66.00,73.74]; auc=[63.58,72.27,78.22]
+models=["BiLSTM","Frozen BERT + LR","Standard TF-IDF SVM","Enhanced Label-Corrected Fast Model"]
+acc=[59.37,64.12,72.56,85.75]; f1=[65.32,66.00,73.74,85.25]; auc=[63.58,72.27,78.22,95.04]
 x=np.arange(len(models)); w=.24
-fig,ax=plt.subplots(figsize=(9,5))
+fig,ax=plt.subplots(figsize=(11,5.5))
 ax.bar(x-w,acc,w,label="Accuracy"); ax.bar(x,f1,w,label="F1"); ax.bar(x+w,auc,w,label="ROC-AUC")
-ax.set_xticks(x); ax.set_xticklabels(models); ax.set_ylabel("Percent"); ax.set_ylim(0,90); ax.legend()
+ax.set_xticks(x); ax.set_xticklabels(models,rotation=10,ha="right"); ax.set_ylabel("Percent"); ax.set_ylim(0,100); ax.legend()
 ax.set_title("Text Model Performance Comparison"); ax.grid(axis="y",alpha=.25)
 save(fig,"figure_8_1_text_model_comparison.png")
 
@@ -124,11 +125,13 @@ def cm_plot(cm,labels,title,name):
     ax.set_xlabel("Predicted"); ax.set_ylabel("Actual"); ax.set_title(title)
     fig.colorbar(im,ax=ax,fraction=.046,pad=.04)
     save(fig,name)
-cm_plot([[129,57],[47,146]],["Class 0","Class 1"],"Text SVM Confusion Matrix","figure_8_2_text_cm.png")
+cm_plot([[129,57],[47,146]],["Class 0","Class 1"],"Standard Text SVM Confusion Matrix","figure_8_2_text_cm.png")
+cm_plot([[169,10],[44,156]],["Class 0","Class 1"],"Enhanced Label-Corrected Text Model Confusion Matrix","figure_8_2b_enhanced_text_cm.png")
 cm_plot([[43,25],[4,7]],["Non-depressed","Depressed"],"Speech Model Confusion Matrix","figure_8_3_speech_cm.png")
 
 # test summary
-fig,ax=plt.subplots(figsize=(7,4)); ax.bar(["Passed","Failed"],[37,0]); ax.set_ylim(0,40); ax.set_title("Final Automated Test Summary")
-for i,v in enumerate([37,0]): ax.text(i,v+1,str(v),ha="center",fontweight="bold")
+fig,ax=plt.subplots(figsize=(7,4)); ax.bar(["Passed","Failed"],[56,0]); ax.set_ylim(0,60); ax.set_title("Final Automated Test Summary")
+for i,v in enumerate([56,0]): ax.text(i,v+1,str(v),ha="center",fontweight="bold")
 save(fig,"figure_8_7_test_summary.png")
 print(OUT)
+

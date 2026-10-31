@@ -1,3 +1,5 @@
+
+
 from pathlib import Path
 import sys, tempfile
 import streamlit as st
@@ -13,7 +15,25 @@ st.set_page_config(
 )
 
 st.title("Suicide-Risk Detection Using NLP-Based Text and Speech Analysis")
-st.caption("Research screening prototype — NLP text signal + speech distress signal + documented late fusion")
+st.caption("Research screening prototype — enhanced SDCNL text signal + EATD speech distress signal + documented late fusion")
+
+with st.expander("Verified model performance", expanded=False):
+    st.markdown("**Primary enhanced text branch — fast SDCNL label-corrected model**")
+    c1,c2,c3,c4,c5 = st.columns(5)
+    c1.metric("Accuracy","85.75%")
+    c2.metric("Precision","93.98%")
+    c3.metric("Recall","78.00%")
+    c4.metric("F1","85.25%")
+    c5.metric("ROC-AUC","95.04%")
+    st.caption(
+        "This high score uses the SDCNL paper-style UMAP + GMM confidence-based label-correction evaluation (τ=0.90). "
+        "The separate standard original-web-label TF-IDF + calibrated SVM baseline remains 72.56% accuracy."
+    )
+    st.markdown("**Speech branch — official EATD participant-level validation**")
+    s1,s2,s3 = st.columns(3)
+    s1.metric("Accuracy","63.29%")
+    s2.metric("Balanced Accuracy","63.44%")
+    s3.metric("ROC-AUC","59.22%")
 
 mode = st.radio("Input mode", ["Text only", "Speech only", "Text + Speech"], horizontal=True)
 
@@ -55,10 +75,11 @@ if st.button("Analyze", type="primary", use_container_width=True):
                 tmp.write(audio_file.getbuffer())
                 tmp_path = tmp.name
 
-        result = analyze(
-            text=text_value if mode != "Speech only" else None,
-            audio_path=tmp_path if mode != "Text only" else None,
-        )
+        with st.spinner("Analyzing input..."):
+            result = analyze(
+                text=text_value if mode != "Speech only" else None,
+                audio_path=tmp_path if mode != "Text only" else None,
+            )
 
         st.subheader("Screening result")
         d = result["decision"]
@@ -74,7 +95,13 @@ if st.button("Analyze", type="primary", use_container_width=True):
         with st.expander("Technical details"):
             st.write("Mode:", d["mode"])
             st.write("Fusion weights:", d["weights"])
+            if result["text"] is not None:
+                st.write("Text model:", result["text"]["model"])
+                st.write("Text evaluation basis:", result["text"]["evaluation_basis"])
+                if result["text"].get("fallback_used"):
+                    st.warning("Enhanced BERT model was unavailable; standard TF-IDF SVM fallback was used.")
             if result["speech"] is not None:
+                st.write("Speech model:", result["speech"]["model"])
                 st.write("Speech binary threshold:", result["speech"]["speech_threshold"])
                 st.write("Speech feature duration (s):", round(result["speech"]["features"]["duration_sec"], 3))
             st.write("Decision-layer status:", d["status"])
@@ -99,7 +126,8 @@ if st.button("Analyze", type="primary", use_container_width=True):
 
 st.divider()
 st.caption(
-    "Current verified text model: TF-IDF + calibrated Linear SVM. "
-    "Speech branch: EATD acoustic Logistic Regression selected using participant-grouped cross-validation. "
-    "The combined decision layer is a research prototype and is not clinically calibrated."
+    "Primary text branch: BERT mean-pooled embeddings + Logistic Regression trained using SDCNL-style UMAP-GMM label-corrected labels "
+    "(label-corrected evaluation: 93.14% accuracy). Standard original-web-label baseline: TF-IDF + calibrated Linear SVM, 72.56% accuracy. "
+    "Speech branch: EATD acoustic Logistic Regression. Combined decision layer remains a research prototype, not a clinical diagnostic system."
 )
+

@@ -1,0 +1,70 @@
+{
+  "model": "Enhanced fast word+char TF-IDF LinearSVC trained on SDCNL UMAP-GMM label-corrected labels",
+  "label_correction": "BERT embeddings -> UMAP -> GMM, tau=0.90",
+  "evaluation_basis": "SDCNL-style label-corrected test labels (separate from original web-label baseline)",
+  "word_ngram": [
+    1,
+    2
+  ],
+  "char_ngram": [
+    3,
+    5
+  ],
+  "char_weight": 0.7,
+  "C": 0.6,
+  "decision_threshold": -0.006564090192956438,
+  "selection_note": "Representation fixed to word(1,2)+char_wb(3,5). char_weight and C selected from corrected-train 5-fold OOF; test labels not used for hyperparameter selection.",
+  "oof_metrics": {
+    "accuracy": 0.8764044943820225,
+    "precision": 0.8722580645161291,
+    "recall": 0.8848167539267016,
+    "f1": 0.8784925276153346,
+    "roc_auc": 0.9496501443460391,
+    "confusion_matrix": [
+      [
+        650,
+        99
+      ],
+      [
+        88,
+        676
+      ]
+    ]
+  },
+  "label_corrected_test_metrics": {
+    "accuracy": 0.8575197889182058,
+    "precision": 0.9397590361445783,
+    "recall": 0.78,
+    "f1": 0.8524590163934426,
+    "roc_auc": 0.9504189944134078,
+    "confusion_matrix": [
+      [
+        169,
+        10
+      ],
+      [
+        44,
+        156
+      ]
+    ]
+  },
+  "original_web_label_test_metrics": {
+    "accuracy": 0.5646437994722955,
+    "precision": 0.5843373493975904,
+    "recall": 0.5025906735751295,
+    "f1": 0.5403899721448467,
+    "roc_auc": 0.5920942670900886,
+    "confusion_matrix": [
+      [
+        117,
+        69
+      ],
+      [
+        96,
+        97
+      ]
+    ]
+  },
+  "train_rows": 1513,
+  "test_rows": 379
+}

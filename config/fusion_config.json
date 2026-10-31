@@ -1,12 +1,12 @@
 {
-  "version": "1.0",
+  "version": "1.2",
   "text_weight": 0.70,
   "speech_weight": 0.30,
   "low_upper_exclusive": 0.40,
   "moderate_upper_exclusive": 0.70,
-  "text_model": "TF-IDF bigram + calibrated LinearSVC",
+  "text_model": "Enhanced word+char TF-IDF + calibrated LinearSVC trained on SDCNL UMAP-GMM label-corrected labels",
   "speech_model": "single-audio acoustic Logistic Regression selected with participant-grouped CV",
   "speech_binary_threshold": 0.38,
   "status": "prototype research decision layer; not clinically validated and not jointly calibrated on paired text-speech suicide labels",
-  "rationale": "Text receives higher weight because SDCNL directly models suicide-related language while EATD models SDS-derived depression/distress. No paired ground truth exists to learn fusion weights."
+  "rationale": "Text receives higher weight because SDCNL directly models suicide/depression language. The primary text model is trained on SDCNL-style confidence-corrected labels. EATD models SDS-derived depression/distress. No paired ground truth exists to learn multimodal fusion weights."
 }

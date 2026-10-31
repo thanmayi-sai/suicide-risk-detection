@@ -1,23 +1,25 @@
 {
   "TEXT ONLY": {
     "text": {
-      "text_probability": 0.19445478825656431,
-      "text_binary_prediction": 0,
-      "model": "TF-IDF bigram + calibrated LinearSVC"
+      "text_probability": 0.9877536141276211,
+      "text_binary_prediction": 1,
+      "model": "Enhanced fast word+char TF-IDF LinearSVC trained on SDCNL UMAP-GMM label-corrected labels",
+      "evaluation_basis": "SDCNL-style label-corrected test labels (separate from original web-label baseline)",
+      "fallback_used": false
     },
     "speech": null,
     "decision": {
       "mode": "text-only",
-      "combined_evidence_score": 0.19445478825656431,
-      "screening_level": "Low",
+      "combined_evidence_score": 0.9877536141276211,
+      "screening_level": "High",
       "weights": {
         "text": 1.0,
         "speech": 0.0
       },
       "status": "prototype research decision layer; not clinically validated and not jointly calibrated on paired text-speech suicide labels",
-      "rationale": "Text receives higher weight because SDCNL directly models suicide-related language while EATD models SDS-derived depression/distress. No paired ground truth exists to learn fusion weights."
+      "rationale": "Text receives higher weight because SDCNL directly models suicide/depression language. The primary text model is trained on SDCNL-style confidence-corrected labels. EATD models SDS-derived depression/distress. No paired ground truth exists to learn multimodal fusion weights."
     },
-    "disclaimer": "Research screening prototype only. The text model was trained on SDCNL suicide/depression Reddit text. The speech model was trained on EATD SDS-derived depression/distress audio, not direct suicide labels. The modalities are not participant-matched, so the combined score is a documented prototype late-fusion signal, not a clinically validated suicide-risk probability or diagnosis."
+    "disclaimer": "Research screening prototype only. The enhanced text branch is trained using SDCNL-style UMAP-GMM confidence-based label correction (tau=0.90). Its 85.75% result is a label-corrected evaluation and is reported separately from the original-web-label baseline. The speech branch uses EATD SDS-derived depression/distress audio rather than direct suicide labels. The modalities are not participant-matched, so the combined score is not a clinically validated suicide-risk probability or diagnosis."
   },
   "SPEECH ONLY": {
     "text": null,
@@ -73,15 +75,17 @@
         "speech": 1.0
       },
       "status": "prototype research decision layer; not clinically validated and not jointly calibrated on paired text-speech suicide labels",
-      "rationale": "Text receives higher weight because SDCNL directly models suicide-related language while EATD models SDS-derived depression/distress. No paired ground truth exists to learn fusion weights."
+      "rationale": "Text receives higher weight because SDCNL directly models suicide/depression language. The primary text model is trained on SDCNL-style confidence-corrected labels. EATD models SDS-derived depression/distress. No paired ground truth exists to learn multimodal fusion weights."
     },
-    "disclaimer": "Research screening prototype only. The text model was trained on SDCNL suicide/depression Reddit text. The speech model was trained on EATD SDS-derived depression/distress audio, not direct suicide labels. The modalities are not participant-matched, so the combined score is a documented prototype late-fusion signal, not a clinically validated suicide-risk probability or diagnosis."
+    "disclaimer": "Research screening prototype only. The enhanced text branch is trained using SDCNL-style UMAP-GMM confidence-based label correction (tau=0.90). Its 85.75% result is a label-corrected evaluation and is reported separately from the original-web-label baseline. The speech branch uses EATD SDS-derived depression/distress audio rather than direct suicide labels. The modalities are not participant-matched, so the combined score is not a clinically validated suicide-risk probability or diagnosis."
   },
   "TEXT + SPEECH": {
     "text": {
-      "text_probability": 0.19445478825656431,
-      "text_binary_prediction": 0,
-      "model": "TF-IDF bigram + calibrated LinearSVC"
+      "text_probability": 0.9877536141276211,
+      "text_binary_prediction": 1,
+      "model": "Enhanced fast word+char TF-IDF LinearSVC trained on SDCNL UMAP-GMM label-corrected labels",
+      "evaluation_basis": "SDCNL-style label-corrected test labels (separate from original web-label baseline)",
+      "fallback_used": false
     },
     "speech": {
       "speech_distress_probability": 0.281613272657457,
@@ -128,15 +132,15 @@
     },
     "decision": {
       "mode": "text+speech",
-      "combined_evidence_score": 0.2206023335768321,
-      "screening_level": "Low",
+      "combined_evidence_score": 0.7759115116865718,
+      "screening_level": "High",
       "weights": {
         "text": 0.7,
         "speech": 0.3
       },
       "status": "prototype research decision layer; not clinically validated and not jointly calibrated on paired text-speech suicide labels",
-      "rationale": "Text receives higher weight because SDCNL directly models suicide-related language while EATD models SDS-derived depression/distress. No paired ground truth exists to learn fusion weights."
+      "rationale": "Text receives higher weight because SDCNL directly models suicide/depression language. The primary text model is trained on SDCNL-style confidence-corrected labels. EATD models SDS-derived depression/distress. No paired ground truth exists to learn multimodal fusion weights."
     },
-    "disclaimer": "Research screening prototype only. The text model was trained on SDCNL suicide/depression Reddit text. The speech model was trained on EATD SDS-derived depression/distress audio, not direct suicide labels. The modalities are not participant-matched, so the combined score is a documented prototype late-fusion signal, not a clinically validated suicide-risk probability or diagnosis."
+    "disclaimer": "Research screening prototype only. The enhanced text branch is trained using SDCNL-style UMAP-GMM confidence-based label correction (tau=0.90). Its 85.75% result is a label-corrected evaluation and is reported separately from the original-web-label baseline. The speech branch uses EATD SDS-derived depression/distress audio rather than direct suicide labels. The modalities are not participant-matched, so the combined score is not a clinically validated suicide-risk probability or diagnosis."
   }
 }

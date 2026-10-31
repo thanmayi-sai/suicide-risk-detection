@@ -1,0 +1,1090 @@
+[
+  {
+    "umap": {
+      "n_neighbors": 10,
+      "n_components": 2,
+      "min_dist": 0.0
+    },
+    "covariance": "full",
+    "tau": 0.9,
+    "cluster_mapping": {
+      "0": 0,
+      "1": 1
+    },
+    "train_corrected_count": 1384,
+    "test_corrected_count": 345,
+    "train_changed_count": 596,
+    "test_changed_count": 151,
+    "train_oof_corrected_label_metrics": {
+      "accuracy": 0.8889623265036352,
+      "precision": 0.8895184135977338,
+      "recall": 0.8746518105849582,
+      "f1": 0.8820224719101124,
+      "roc_auc": 0.9602188118638426,
+      "confusion_matrix": [
+        [
+          717,
+          78
+        ],
+        [
+          90,
+          628
+        ]
+      ]
+    },
+    "test_metrics_vs_label_corrected_ground_truth": {
+      "accuracy": 0.8891820580474934,
+      "precision": 0.8817204301075269,
+      "recall": 0.8913043478260869,
+      "f1": 0.8864864864864865,
+      "roc_auc": 0.959726867335563,
+      "confusion_matrix": [
+        [
+          173,
+          22
+        ],
+        [
+          20,
+          164
+        ]
+      ]
+    },
+    "test_metrics_vs_original_web_labels": {
+      "accuracy": 0.5277044854881267,
+      "precision": 0.5376344086021505,
+      "recall": 0.5181347150259067,
+      "f1": 0.5277044854881267,
+      "roc_auc": 0.593988523037495,
+      "confusion_matrix": [
+        [
+          100,
+          86
+        ],
+        [
+          93,
+          100
+        ]
+      ]
+    }
+  },
+  {
+    "umap": {
+      "n_neighbors": 10,
+      "n_components": 2,
+      "min_dist": 0.0
+    },
+    "covariance": "diag",
+    "tau": 0.9,
+    "cluster_mapping": {
+      "0": 0,
+      "1": 1
+    },
+    "train_corrected_count": 1364,
+    "test_corrected_count": 338,
+    "train_changed_count": 584,
+    "test_changed_count": 148,
+    "train_oof_corrected_label_metrics": {
+      "accuracy": 0.8830138797091871,
+      "precision": 0.8812589413447782,
+      "recall": 0.8676056338028169,
+      "f1": 0.8743789921930447,
+      "roc_auc": 0.9613228561906935,
+      "confusion_matrix": [
+        [
+          720,
+          83
+        ],
+        [
+          94,
+          616
+        ]
+      ]
+    },
+    "test_metrics_vs_label_corrected_ground_truth": {
+      "accuracy": 0.8786279683377308,
+      "precision": 0.8813559322033898,
+      "recall": 0.861878453038674,
+      "f1": 0.8715083798882681,
+      "roc_auc": 0.958675149282884,
+      "confusion_matrix": [
+        [
+          177,
+          21
+        ],
+        [
+          25,
+          156
+        ]
+      ]
+    },
+    "test_metrics_vs_original_web_labels": {
+      "accuracy": 0.525065963060686,
+      "precision": 0.536723163841808,
+      "recall": 0.49222797927461137,
+      "f1": 0.5135135135135135,
+      "roc_auc": 0.5966906234330603,
+      "confusion_matrix": [
+        [
+          104,
+          82
+        ],
+        [
+          98,
+          95
+        ]
+      ]
+    }
+  },
+  {
+    "umap": {
+      "n_neighbors": 15,
+      "n_components": 2,
+      "min_dist": 0.0
+    },
+    "covariance": "full",
+    "tau": 0.9,
+    "cluster_mapping": {
+      "0": 0,
+      "1": 1
+    },
+    "train_corrected_count": 1381,
+    "test_corrected_count": 343,
+    "train_changed_count": 599,
+    "test_changed_count": 152,
+    "train_oof_corrected_label_metrics": {
+      "accuracy": 0.8975545274289491,
+      "precision": 0.9,
+      "recall": 0.8864569083447332,
+      "f1": 0.8931771192281185,
+      "roc_auc": 0.9657390464661448,
+      "confusion_matrix": [
+        [
+          710,
+          72
+        ],
+        [
+          83,
+          648
+        ]
+      ]
+    },
+    "test_metrics_vs_label_corrected_ground_truth": {
+      "accuracy": 0.8944591029023746,
+      "precision": 0.9027027027027027,
+      "recall": 0.8835978835978836,
+      "f1": 0.893048128342246,
+      "roc_auc": 0.9656920077972709,
+      "confusion_matrix": [
+        [
+          172,
+          18
+        ],
+        [
+          22,
+          167
+        ]
+      ]
+    },
+    "test_metrics_vs_original_web_labels": {
+      "accuracy": 0.5356200527704486,
+      "precision": 0.5459459459459459,
+      "recall": 0.5233160621761658,
+      "f1": 0.5343915343915344,
+      "roc_auc": 0.604796924619756,
+      "confusion_matrix": [
+        [
+          102,
+          84
+        ],
+        [
+          92,
+          101
+        ]
+      ]
+    }
+  },
+  {
+    "umap": {
+      "n_neighbors": 15,
+      "n_components": 2,
+      "min_dist": 0.0
+    },
+    "covariance": "diag",
+    "tau": 0.9,
+    "cluster_mapping": {
+      "0": 0,
+      "1": 1
+    },
+    "train_corrected_count": 1383,
+    "test_corrected_count": 341,
+    "train_changed_count": 602,
+    "test_changed_count": 149,
+    "train_oof_corrected_label_metrics": {
+      "accuracy": 0.9101123595505618,
+      "precision": 0.9070422535211268,
+      "recall": 0.9019607843137255,
+      "f1": 0.9044943820224719,
+      "roc_auc": 0.9708704508086088,
+      "confusion_matrix": [
+        [
+          733,
+          66
+        ],
+        [
+          70,
+          644
+        ]
+      ]
+    },
+    "test_metrics_vs_label_corrected_ground_truth": {
+      "accuracy": 0.8839050131926122,
+      "precision": 0.8901098901098901,
+      "recall": 0.8709677419354839,
+      "f1": 0.8804347826086957,
+      "roc_auc": 0.9635634297175331,
+      "confusion_matrix": [
+        [
+          173,
+          20
+        ],
+        [
+          24,
+          162
+        ]
+      ]
+    },
+    "test_metrics_vs_original_web_labels": {
+      "accuracy": 0.5435356200527705,
+      "precision": 0.554945054945055,
+      "recall": 0.5233160621761658,
+      "f1": 0.5386666666666666,
+      "roc_auc": 0.6091704273218563,
+      "confusion_matrix": [
+        [
+          105,
+          81
+        ],
+        [
+          92,
+          101
+        ]
+      ]
+    }
+  },
+  {
+    "umap": {
+      "n_neighbors": 30,
+      "n_components": 2,
+      "min_dist": 0.0
+    },
+    "covariance": "full",
+    "tau": 0.9,
+    "cluster_mapping": {
+      "0": 1,
+      "1": 0
+    },
+    "train_corrected_count": 1383,
+    "test_corrected_count": 347,
+    "train_changed_count": 601,
+    "test_changed_count": 152,
+    "train_oof_corrected_label_metrics": {
+      "accuracy": 0.9239920687376074,
+      "precision": 0.9196675900277008,
+      "recall": 0.9209431345353676,
+      "f1": 0.9203049203049203,
+      "roc_auc": 0.9778103503831659,
+      "confusion_matrix": [
+        [
+          734,
+          58
+        ],
+        [
+          57,
+          664
+        ]
+      ]
+    },
+    "test_metrics_vs_label_corrected_ground_truth": {
+      "accuracy": 0.9050131926121372,
+      "precision": 0.9144385026737968,
+      "recall": 0.8952879581151832,
+      "f1": 0.9047619047619048,
+      "roc_auc": 0.9700623816419739,
+      "confusion_matrix": [
+        [
+          172,
+          16
+        ],
+        [
+          20,
+          171
+        ]
+      ]
+    },
+    "test_metrics_vs_original_web_labels": {
+      "accuracy": 0.5303430079155673,
+      "precision": 0.5401069518716578,
+      "recall": 0.5233160621761658,
+      "f1": 0.531578947368421,
+      "roc_auc": 0.6027912418519137,
+      "confusion_matrix": [
+        [
+          100,
+          86
+        ],
+        [
+          92,
+          101
+        ]
+      ]
+    }
+  },
+  {
+    "umap": {
+      "n_neighbors": 30,
+      "n_components": 2,
+      "min_dist": 0.0
+    },
+    "covariance": "diag",
+    "tau": 0.9,
+    "cluster_mapping": {
+      "0": 1,
+      "1": 0
+    },
+    "train_corrected_count": 1378,
+    "test_corrected_count": 343,
+    "train_changed_count": 596,
+    "test_changed_count": 150,
+    "train_oof_corrected_label_metrics": {
+      "accuracy": 0.914738929279577,
+      "precision": 0.908835904628331,
+      "recall": 0.9101123595505618,
+      "f1": 0.9094736842105263,
+      "roc_auc": 0.9773474869895777,
+      "confusion_matrix": [
+        [
+          736,
+          65
+        ],
+        [
+          64,
+          648
+        ]
+      ]
+    },
+    "test_metrics_vs_label_corrected_ground_truth": {
+      "accuracy": 0.9076517150395779,
+      "precision": 0.9230769230769231,
+      "recall": 0.8888888888888888,
+      "f1": 0.9056603773584906,
+      "roc_auc": 0.9696184906711223,
+      "confusion_matrix": [
+        [
+          176,
+          14
+        ],
+        [
+          21,
+          168
+        ]
+      ]
+    },
+    "test_metrics_vs_original_web_labels": {
+      "accuracy": 0.5435356200527705,
+      "precision": 0.554945054945055,
+      "recall": 0.5233160621761658,
+      "f1": 0.5386666666666666,
+      "roc_auc": 0.6067747506824893,
+      "confusion_matrix": [
+        [
+          105,
+          81
+        ],
+        [
+          92,
+          101
+        ]
+      ]
+    }
+  },
+  {
+    "umap": {
+      "n_neighbors": 15,
+      "n_components": 5,
+      "min_dist": 0.0
+    },
+    "covariance": "full",
+    "tau": 0.9,
+    "cluster_mapping": {
+      "0": 0,
+      "1": 1
+    },
+    "train_corrected_count": 1476,
+    "test_corrected_count": 366,
+    "train_changed_count": 638,
+    "test_changed_count": 167,
+    "train_oof_corrected_label_metrics": {
+      "accuracy": 0.9226701916721745,
+      "precision": 0.933852140077821,
+      "recall": 0.916030534351145,
+      "f1": 0.9248554913294798,
+      "roc_auc": 0.9772654885531183,
+      "confusion_matrix": [
+        [
+          676,
+          51
+        ],
+        [
+          66,
+          720
+        ]
+      ]
+    },
+    "test_metrics_vs_label_corrected_ground_truth": {
+      "accuracy": 0.899736147757256,
+      "precision": 0.9381443298969072,
+      "recall": 0.875,
+      "f1": 0.9054726368159204,
+      "roc_auc": 0.9741059379217274,
+      "confusion_matrix": [
+        [
+          159,
+          12
+        ],
+        [
+          26,
+          182
+        ]
+      ]
+    },
+    "test_metrics_vs_original_web_labels": {
+      "accuracy": 0.554089709762533,
+      "precision": 0.5618556701030928,
+      "recall": 0.5647668393782384,
+      "f1": 0.5633074935400517,
+      "roc_auc": 0.593709955986406,
+      "confusion_matrix": [
+        [
+          101,
+          85
+        ],
+        [
+          84,
+          109
+        ]
+      ]
+    }
+  },
+  {
+    "umap": {
+      "n_neighbors": 15,
+      "n_components": 5,
+      "min_dist": 0.0
+    },
+    "covariance": "diag",
+    "tau": 0.9,
+    "cluster_mapping": {
+      "0": 0,
+      "1": 1
+    },
+    "train_corrected_count": 1459,
+    "test_corrected_count": 365,
+    "train_changed_count": 628,
+    "test_changed_count": 166,
+    "train_oof_corrected_label_metrics": {
+      "accuracy": 0.9180436219431592,
+      "precision": 0.9356955380577427,
+      "recall": 0.9048223350253807,
+      "f1": 0.92,
+      "roc_auc": 0.975196919306844,
+      "confusion_matrix": [
+        [
+          676,
+          49
+        ],
+        [
+          75,
+          713
+        ]
+      ]
+    },
+    "test_metrics_vs_label_corrected_ground_truth": {
+      "accuracy": 0.9102902374670184,
+      "precision": 0.9523809523809523,
+      "recall": 0.8780487804878049,
+      "f1": 0.9137055837563451,
+      "roc_auc": 0.975049060835436,
+      "confusion_matrix": [
+        [
+          165,
+          9
+        ],
+        [
+          25,
+          180
+        ]
+      ]
+    },
+    "test_metrics_vs_original_web_labels": {
+      "accuracy": 0.5567282321899736,
+      "precision": 0.5661375661375662,
+      "recall": 0.5544041450777202,
+      "f1": 0.5602094240837696,
+      "roc_auc": 0.5917042732185638,
+      "confusion_matrix": [
+        [
+          104,
+          82
+        ],
+        [
+          86,
+          107
+        ]
+      ]
+    }
+  },
+  {
+    "umap": {
+      "n_neighbors": 30,
+      "n_components": 5,
+      "min_dist": 0.0
+    },
+    "covariance": "full",
+    "tau": 0.9,
+    "cluster_mapping": {
+      "0": 1,
+      "1": 0
+    },
+    "train_corrected_count": 1475,
+    "test_corrected_count": 369,
+    "train_changed_count": 630,
+    "test_changed_count": 168,
+    "train_oof_corrected_label_metrics": {
+      "accuracy": 0.9213483146067416,
+      "precision": 0.9351491569390402,
+      "recall": 0.9126582278481012,
+      "f1": 0.9237668161434978,
+      "roc_auc": 0.9779662797415831,
+      "confusion_matrix": [
+        [
+          673,
+          50
+        ],
+        [
+          69,
+          721
+        ]
+      ]
+    },
+    "test_metrics_vs_label_corrected_ground_truth": {
+      "accuracy": 0.9129287598944591,
+      "precision": 0.9536082474226805,
+      "recall": 0.8851674641148325,
+      "f1": 0.9181141439205955,
+      "roc_auc": 0.9807768083309879,
+      "confusion_matrix": [
+        [
+          161,
+          9
+        ],
+        [
+          24,
+          185
+        ]
+      ]
+    },
+    "test_metrics_vs_original_web_labels": {
+      "accuracy": 0.5488126649076517,
+      "precision": 0.5567010309278351,
+      "recall": 0.5595854922279793,
+      "f1": 0.5581395348837209,
+      "roc_auc": 0.5966627667279514,
+      "confusion_matrix": [
+        [
+          100,
+          86
+        ],
+        [
+          85,
+          108
+        ]
+      ]
+    }
+  },
+  {
+    "umap": {
+      "n_neighbors": 30,
+      "n_components": 5,
+      "min_dist": 0.0
+    },
+    "covariance": "diag",
+    "tau": 0.9,
+    "cluster_mapping": {
+      "0": 0,
+      "1": 1
+    },
+    "train_corrected_count": 1465,
+    "test_corrected_count": 367,
+    "train_changed_count": 631,
+    "test_changed_count": 165,
+    "train_oof_corrected_label_metrics": {
+      "accuracy": 0.9193654990085922,
+      "precision": 0.9244264507422402,
+      "recall": 0.9121171770972037,
+      "f1": 0.9182305630026809,
+      "roc_auc": 0.9776605820410931,
+      "confusion_matrix": [
+        [
+          706,
+          56
+        ],
+        [
+          66,
+          685
+        ]
+      ]
+    },
+    "test_metrics_vs_label_corrected_ground_truth": {
+      "accuracy": 0.9023746701846965,
+      "precision": 0.9259259259259259,
+      "recall": 0.8838383838383839,
+      "f1": 0.9043927648578811,
+      "roc_auc": 0.9765890953736257,
+      "confusion_matrix": [
+        [
+          167,
+          14
+        ],
+        [
+          23,
+          175
+        ]
+      ]
+    },
+    "test_metrics_vs_original_web_labels": {
+      "accuracy": 0.5514511873350924,
+      "precision": 0.5608465608465608,
+      "recall": 0.5492227979274611,
+      "f1": 0.5549738219895288,
+      "roc_auc": 0.5838765390829572,
+      "confusion_matrix": [
+        [
+          103,
+          83
+        ],
+        [
+          87,
+          106
+        ]
+      ]
+    }
+  },
+  {
+    "umap": {
+      "n_neighbors": 15,
+      "n_components": 10,
+      "min_dist": 0.0
+    },
+    "covariance": "full",
+    "tau": 0.9,
+    "cluster_mapping": {
+      "0": 0,
+      "1": 1
+    },
+    "train_corrected_count": 1501,
+    "test_corrected_count": 375,
+    "train_changed_count": 640,
+    "test_changed_count": 169,
+    "train_oof_corrected_label_metrics": {
+      "accuracy": 0.9068076668869796,
+      "precision": 0.9119669876203577,
+      "recall": 0.8959459459459459,
+      "f1": 0.9038854805725971,
+      "roc_auc": 0.9720481801335618,
+      "confusion_matrix": [
+        [
+          709,
+          64
+        ],
+        [
+          77,
+          663
+        ]
+      ]
+    },
+    "test_metrics_vs_label_corrected_ground_truth": {
+      "accuracy": 0.9050131926121372,
+      "precision": 0.9277777777777778,
+      "recall": 0.8789473684210526,
+      "f1": 0.9027027027027027,
+      "roc_auc": 0.9740740740740741,
+      "confusion_matrix": [
+        [
+          176,
+          13
+        ],
+        [
+          23,
+          167
+        ]
+      ]
+    },
+    "test_metrics_vs_original_web_labels": {
+      "accuracy": 0.554089709762533,
+      "precision": 0.5666666666666667,
+      "recall": 0.5284974093264249,
+      "f1": 0.546916890080429,
+      "roc_auc": 0.6026241016212601,
+      "confusion_matrix": [
+        [
+          108,
+          78
+        ],
+        [
+          91,
+          102
+        ]
+      ]
+    }
+  },
+  {
+    "umap": {
+      "n_neighbors": 15,
+      "n_components": 10,
+      "min_dist": 0.0
+    },
+    "covariance": "diag",
+    "tau": 0.9,
+    "cluster_mapping": {
+      "0": 1,
+      "1": 0
+    },
+    "train_corrected_count": 1496,
+    "test_corrected_count": 372,
+    "train_changed_count": 637,
+    "test_changed_count": 170,
+    "train_oof_corrected_label_metrics": {
+      "accuracy": 0.9087904824851288,
+      "precision": 0.9129251700680272,
+      "recall": 0.9006711409395973,
+      "f1": 0.9067567567567567,
+      "roc_auc": 0.9740160095078301,
+      "confusion_matrix": [
+        [
+          704,
+          64
+        ],
+        [
+          74,
+          671
+        ]
+      ]
+    },
+    "test_metrics_vs_label_corrected_ground_truth": {
+      "accuracy": 0.9050131926121372,
+      "precision": 0.9289617486338798,
+      "recall": 0.8808290155440415,
+      "f1": 0.9042553191489362,
+      "roc_auc": 0.9773803554515572,
+      "confusion_matrix": [
+        [
+          173,
+          13
+        ],
+        [
+          23,
+          170
+        ]
+      ]
+    },
+    "test_metrics_vs_original_web_labels": {
+      "accuracy": 0.5567282321899736,
+      "precision": 0.5683060109289617,
+      "recall": 0.538860103626943,
+      "f1": 0.5531914893617021,
+      "roc_auc": 0.5984734525600313,
+      "confusion_matrix": [
+        [
+          107,
+          79
+        ],
+        [
+          89,
+          104
+        ]
+      ]
+    }
+  },
+  {
+    "umap": {
+      "n_neighbors": 30,
+      "n_components": 10,
+      "min_dist": 0.0
+    },
+    "covariance": "full",
+    "tau": 0.9,
+    "cluster_mapping": {
+      "0": 0,
+      "1": 1
+    },
+    "train_corrected_count": 1496,
+    "test_corrected_count": 375,
+    "train_changed_count": 633,
+    "test_changed_count": 173,
+    "train_oof_corrected_label_metrics": {
+      "accuracy": 0.9239920687376074,
+      "precision": 0.9310344827586207,
+      "recall": 0.9176470588235294,
+      "f1": 0.924292297564187,
+      "roc_auc": 0.9774300094369298,
+      "confusion_matrix": [
+        [
+          696,
+          52
+        ],
+        [
+          63,
+          702
+        ]
+      ]
+    },
+    "test_metrics_vs_label_corrected_ground_truth": {
+      "accuracy": 0.9050131926121372,
+      "precision": 0.9308510638297872,
+      "recall": 0.8838383838383839,
+      "f1": 0.9067357512953368,
+      "roc_auc": 0.9715106869803003,
+      "confusion_matrix": [
+        [
+          168,
+          13
+        ],
+        [
+          23,
+          175
+        ]
+      ]
+    },
+    "test_metrics_vs_original_web_labels": {
+      "accuracy": 0.5329815303430079,
+      "precision": 0.5425531914893617,
+      "recall": 0.5284974093264249,
+      "f1": 0.5354330708661418,
+      "roc_auc": 0.5950192211265252,
+      "confusion_matrix": [
+        [
+          100,
+          86
+        ],
+        [
+          91,
+          102
+        ]
+      ]
+    }
+  },
+  {
+    "umap": {
+      "n_neighbors": 30,
+      "n_components": 10,
+      "min_dist": 0.0
+    },
+    "covariance": "diag",
+    "tau": 0.9,
+    "cluster_mapping": {
+      "0": 0,
+      "1": 1
+    },
+    "train_corrected_count": 1491,
+    "test_corrected_count": 370,
+    "train_changed_count": 642,
+    "test_changed_count": 167,
+    "train_oof_corrected_label_metrics": {
+      "accuracy": 0.9200264375413086,
+      "precision": 0.9247606019151847,
+      "recall": 0.9110512129380054,
+      "f1": 0.9178547182620502,
+      "roc_auc": 0.9788946339860369,
+      "confusion_matrix": [
+        [
+          716,
+          55
+        ],
+        [
+          66,
+          676
+        ]
+      ]
+    },
+    "test_metrics_vs_label_corrected_ground_truth": {
+      "accuracy": 0.9050131926121372,
+      "precision": 0.9354838709677419,
+      "recall": 0.8787878787878788,
+      "f1": 0.90625,
+      "roc_auc": 0.973575534349015,
+      "confusion_matrix": [
+        [
+          169,
+          12
+        ],
+        [
+          24,
+          174
+        ]
+      ]
+    },
+    "test_metrics_vs_original_web_labels": {
+      "accuracy": 0.5382585751978892,
+      "precision": 0.5483870967741935,
+      "recall": 0.5284974093264249,
+      "f1": 0.5382585751978892,
+      "roc_auc": 0.583625828736977,
+      "confusion_matrix": [
+        [
+          102,
+          84
+        ],
+        [
+          91,
+          102
+        ]
+      ]
+    }
+  },
+  {
+    "umap": {
+      "n_neighbors": 50,
+      "n_components": 10,
+      "min_dist": 0.0
+    },
+    "covariance": "full",
+    "tau": 0.9,
+    "cluster_mapping": {
+      "0": 0,
+      "1": 1
+    },
+    "train_corrected_count": 1493,
+    "test_corrected_count": 373,
+    "train_changed_count": 640,
+    "test_changed_count": 169,
+    "train_oof_corrected_label_metrics": {
+      "accuracy": 0.9200264375413086,
+      "precision": 0.9227696404793608,
+      "recall": 0.9166666666666666,
+      "f1": 0.9197080291970803,
+      "roc_auc": 0.9775237116716642,
+      "confusion_matrix": [
+        [
+          699,
+          58
+        ],
+        [
+          63,
+          693
+        ]
+      ]
+    },
+    "test_metrics_vs_label_corrected_ground_truth": {
+      "accuracy": 0.9182058047493403,
+      "precision": 0.9319371727748691,
+      "recall": 0.9081632653061225,
+      "f1": 0.9198966408268734,
+      "roc_auc": 0.97945243671239,
+      "confusion_matrix": [
+        [
+          170,
+          13
+        ],
+        [
+          18,
+          178
+        ]
+      ]
+    },
+    "test_metrics_vs_original_web_labels": {
+      "accuracy": 0.5514511873350924,
+      "precision": 0.5602094240837696,
+      "recall": 0.5544041450777202,
+      "f1": 0.5572916666666666,
+      "roc_auc": 0.5979163184578529,
+      "confusion_matrix": [
+        [
+          102,
+          84
+        ],
+        [
+          86,
+          107
+        ]
+      ]
+    }
+  },
+  {
+    "umap": {
+      "n_neighbors": 50,
+      "n_components": 10,
+      "min_dist": 0.0
+    },
+    "covariance": "diag",
+    "tau": 0.9,
+    "cluster_mapping": {
+      "0": 0,
+      "1": 1
+    },
+    "train_corrected_count": 1488,
+    "test_corrected_count": 370,
+    "train_changed_count": 640,
+    "test_changed_count": 171,
+    "train_oof_corrected_label_metrics": {
+      "accuracy": 0.9325842696629213,
+      "precision": 0.9413333333333334,
+      "recall": 0.9240837696335078,
+      "f1": 0.9326287978863936,
+      "roc_auc": 0.9841411585429788,
+      "confusion_matrix": [
+        [
+          705,
+          44
+        ],
+        [
+          58,
+          706
+        ]
+      ]
+    },
+    "test_metrics_vs_label_corrected_ground_truth": {
+      "accuracy": 0.9313984168865436,
+      "precision": 0.953125,
+      "recall": 0.915,
+      "f1": 0.9336734693877551,
+      "roc_auc": 0.9853351955307263,
+      "confusion_matrix": [
+        [
+          170,
+          9
+        ],
+        [
+          17,
+          183
+        ]
+      ]
+    },
+    "test_metrics_vs_original_web_labels": {
+      "accuracy": 0.554089709762533,
+      "precision": 0.5625,
+      "recall": 0.5595854922279793,
+      "f1": 0.561038961038961,
+      "roc_auc": 0.5907292885397515,
+      "confusion_matrix": [
+        [
+          102,
+          84
+        ],
+        [
+          85,
+          108
+        ]
+      ]
+    }
+  }
+]

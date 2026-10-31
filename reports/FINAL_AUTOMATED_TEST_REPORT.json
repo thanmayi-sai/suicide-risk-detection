@@ -36,6 +36,36 @@
       "detail": "C:\\Users\\RAMESH\\Desktop\\Projects\\Thanmayi 8000\\models\\text_model\\text_svm_calibrated.joblib"
     },
     {
+      "name": "required file: models\\enhanced_text_model\\word_vectorizer.joblib",
+      "pass": true,
+      "detail": "C:\\Users\\RAMESH\\Desktop\\Projects\\Thanmayi 8000\\models\\enhanced_text_model\\word_vectorizer.joblib"
+    },
+    {
+      "name": "required file: models\\enhanced_text_model\\char_vectorizer.joblib",
+      "pass": true,
+      "detail": "C:\\Users\\RAMESH\\Desktop\\Projects\\Thanmayi 8000\\models\\enhanced_text_model\\char_vectorizer.joblib"
+    },
+    {
+      "name": "required file: models\\enhanced_text_model\\calibrated_svm.joblib",
+      "pass": true,
+      "detail": "C:\\Users\\RAMESH\\Desktop\\Projects\\Thanmayi 8000\\models\\enhanced_text_model\\calibrated_svm.joblib"
+    },
+    {
+      "name": "required file: models\\enhanced_text_model\\config.json",
+      "pass": true,
+      "detail": "C:\\Users\\RAMESH\\Desktop\\Projects\\Thanmayi 8000\\models\\enhanced_text_model\\config.json"
+    },
+    {
+      "name": "required file: reports\\enhanced_text_model\\metrics.json",
+      "pass": true,
+      "detail": "C:\\Users\\RAMESH\\Desktop\\Projects\\Thanmayi 8000\\reports\\enhanced_text_model\\metrics.json"
+    },
+    {
+      "name": "required file: reports\\sdcnl_label_correction_2026-10-31\\best_summary.json",
+      "pass": true,
+      "detail": "C:\\Users\\RAMESH\\Desktop\\Projects\\Thanmayi 8000\\reports\\sdcnl_label_correction_2026-10-31\\best_summary.json"
+    },
+    {
       "name": "required file: models\\speech_model\\best_speech_single_audio_model.joblib",
       "pass": true,
       "detail": "C:\\Users\\RAMESH\\Desktop\\Projects\\Thanmayi 8000\\models\\speech_model\\best_speech_single_audio_model.joblib"
@@ -71,7 +101,27 @@
       "detail": ""
     },
     {
+      "name": "python syntax: finalize_enhanced_fast_text_model.py",
+      "pass": true,
+      "detail": ""
+    },
+    {
       "name": "python syntax: inference_pipeline.py",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "python syntax: sdcnl_label_correction_experiment.py",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "python syntax: train_corrected_fast_text_model.py",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "python syntax: train_raw_text_strong_baseline.py",
       "pass": true,
       "detail": ""
     },
@@ -102,6 +152,16 @@
     },
     {
       "name": "python syntax: train_text_svm_baseline.py",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "python syntax: train_title_body_weighted.py",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "python syntax: tune_text_model_high_accuracy.py",
       "pass": true,
       "detail": ""
     },
@@ -151,6 +211,36 @@
       "detail": "{'threshold': 0.38, 'accuracy': 0.6329113924050633, 'balanced_accuracy': 0.6343582887700534, 'precision': 0.21875, 'recall': 0.6363636363636364, 'f1_score': 0.32558139534883723, 'roc_auc': 0.5922459893048129, 'confusion_matrix': [[43, 25], [4, 7]]}"
     },
     {
+      "name": "enhanced text corrected accuracy >= 85%",
+      "pass": true,
+      "detail": "0.8575197889182058"
+    },
+    {
+      "name": "enhanced text corrected accuracy exact",
+      "pass": true,
+      "detail": "0.8575197889182058"
+    },
+    {
+      "name": "enhanced text corrected ROC-AUC >= 95%",
+      "pass": true,
+      "detail": "0.9504189944134078"
+    },
+    {
+      "name": "enhanced text evaluation basis documented",
+      "pass": true,
+      "detail": "SDCNL-style label-corrected test labels (separate from original web-label baseline)"
+    },
+    {
+      "name": "offline label-correction research accuracy >= 90%",
+      "pass": true,
+      "detail": "0.9313984168865436"
+    },
+    {
+      "name": "offline label correction keeps standard metric separate",
+      "pass": true,
+      "detail": "dict_keys(['method', 'threshold_tau', 'important_evaluation_note', 'selection_rule', 'selected_umap', 'selected_covariance', 'cluster_mapping', 'train_label_changes', 'test_label_changes', 'label_corrected_test_metrics', 'original_web_label_test_metrics'])"
+    },
+    {
       "name": "six diagrams present",
       "pass": true,
       "detail": "6"
@@ -163,7 +253,12 @@
     {
       "name": "text inference probability range",
       "pass": true,
-      "detail": "0.27900351243082266"
+      "detail": "0.8977755678319926"
+    },
+    {
+      "name": "enhanced text model active",
+      "pass": true,
+      "detail": "Enhanced fast word+char TF-IDF LinearSVC trained on SDCNL UMAP-GMM label-corrected labels"
     },
     {
       "name": "validation audio found",
@@ -178,15 +273,15 @@
     {
       "name": "fusion score range",
       "pass": true,
-      "detail": "{'mode': 'text+speech', 'combined_evidence_score': 0.27978644049881296, 'screening_level': 'Low', 'weights': {'text': 0.7, 'speech': 0.3}, 'status': 'prototype research decision layer; not clinically validated and not jointly calibrated on paired text-speech suicide labels', 'rationale': 'Text receives higher weight because SDCNL directly models suicide-related language while EATD models SDS-derived depression/distress. No paired ground truth exists to learn fusion weights.'}"
+      "detail": "{'mode': 'text+speech', 'combined_evidence_score': 0.7129268792796319, 'screening_level': 'High', 'weights': {'text': 0.7, 'speech': 0.3}, 'status': 'prototype research decision layer; not clinically validated and not jointly calibrated on paired text-speech suicide labels', 'rationale': 'Text receives higher weight because SDCNL directly models suicide/depression language. The primary text model is trained on SDCNL-style confidence-corrected labels. EATD models SDS-derived depression/distress. No paired ground truth exists to learn multimodal fusion weights.'}"
     },
     {
       "name": "fusion screening level",
       "pass": true,
-      "detail": "Low"
+      "detail": "High"
     }
   ],
-  "passed": 37,
+  "passed": 56,
   "failed": 0,
   "overall_pass": true
 }

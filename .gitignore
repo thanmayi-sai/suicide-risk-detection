@@ -62,3 +62,26 @@ reports/capture_three_outputs.py
 reports/open_app.vbs
 reports/type_sample.vbs
 reports/edge_test_profile/
+
+# Accuracy-tuning scratch experiments (final artifacts are kept separately)
+models/corrected_fast_text_2026-10-31/
+models/raw_text_strong_2026-10-31/
+reports/corrected_fast_text_2026-10-31/
+reports/raw_text_strong_2026-10-31/
+src/train_corrected_fast_text_model.py
+src/train_raw_text_strong_baseline.py
+src/train_title_body_weighted.py
+src/tune_text_model_high_accuracy.py
+
+# Internal maintenance helpers / auth screenshots
+reports/clean_tool_footer_artifacts.py
+reports/finalize_beginner_guide_docx.py
+reports/make_final_verification_docx.py
+reports/patch_report_for_enhanced_model.py
+reports/sync_final_counts.py
+reports/update_beginner_guide_docx.py
+reports/github_auth_*.png
+reports/github_google_auth.png
+reports/github_new_repo_screen.png
+reports/github_tab.png
+reports/switch_git_tab.vbs
